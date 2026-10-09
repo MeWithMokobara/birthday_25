@@ -1,0 +1,2145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday, Cutie 💜 (3D)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Caveat:wght@500;700&family=Anton&family=Lilita+One&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#fdf3f7; --bg2:#f1e4fb; --ink:#3b1f4a; --muted:#7b5a8c; --card:#ffffff;
+  --plum:#6c2f8f; --lav:#b38ce0; --pink:#f48fb1; --blush:#ffd6e5; --gold:#ffcf6b;
+  --round:"Fredoka", "Trebuchet MS", ui-rounded, system-ui, sans-serif;
+  --hand:"Caveat", "Segoe Print", "Bradley Hand", cursive;
+  --meme:"Anton", Impact, "Arial Narrow Bold", sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#24112f; --bg2:#321943; --ink:#fbeaff; --muted:#d3b5e4; --card:#3a1f4d; --blush:#5a2b55;
+}}
+:root[data-theme="dark"]{--bg:#24112f; --bg2:#321943; --ink:#fbeaff; --muted:#d3b5e4; --card:#3a1f4d; --blush:#5a2b55;}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 64px);scroll-behavior:smooth;height:100%}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font-family:var(--round);font-size:17px;line-height:1.55;overflow-x:hidden}
+button{font:inherit;cursor:pointer;color:inherit}
+:focus-visible{outline:3px solid var(--plum);outline-offset:3px}
+.hidden{display:none!important}
+
+/* floating hearts backdrop */
+.float-bg{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.float-bg span{position:absolute;bottom:-40px;animation:floatUp linear infinite;opacity:.55}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg)}}
+
+/* ================= LOGIN ================= */
+#login{position:fixed;inset:0;z-index:10;background:radial-gradient(circle at 30% 20%,#fbd3e9 0%,transparent 45%),radial-gradient(circle at 80% 80%,#d9c2ff 0%,transparent 50%),linear-gradient(160deg,#fff0f6,#ead9ff);color:#3b1f4a;overflow:hidden}
+.gate-title{position:absolute;top:calc(env(safe-area-inset-top,0px) + 6vh);left:0;right:0;text-align:center;padding:0 20px}
+.gate-title h1{font-size:clamp(1.9rem,6vw,3.4rem);margin:0;line-height:1.05;color:#6c2f8f}
+.gate-title p{margin:.5em auto 0;max-width:36ch;color:#7b5a8c}
+.lockbox{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);width:min(330px,88vw);background:#fff;border-radius:24px;padding:20px;box-shadow:0 18px 40px -12px rgba(108,47,143,.45);transition:left .38s cubic-bezier(.5,1.6,.4,1),top .38s cubic-bezier(.5,1.6,.4,1)}
+.lockbox.moved{transform:none}
+.lockbox label{display:block;font-weight:600;margin-bottom:8px}
+.lockbox .inrow{display:flex;gap:8px}
+.lockbox input{flex:1;min-width:0;border:2px solid #e2cff5;border-radius:14px;padding:12px 14px;font:inherit;color:#3b1f4a;background:#fbf7ff}
+.lockbox input:focus{outline:none;border-color:#b38ce0}
+.lockbox button{border:0;border-radius:14px;padding:0 16px;background:#6c2f8f;color:#fff;font-weight:600}
+.attempts{font-size:.85rem;color:#7b5a8c;margin-top:8px;min-height:1.3em}
+.bubble{position:absolute;left:50%;top:-14px;transform:translate(-50%,-100%);background:#3b1f4a;color:#fff;padding:6px 12px;border-radius:12px;font-size:.9rem;white-space:nowrap;opacity:0;transition:opacity .2s;pointer-events:none}
+.bubble::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:#3b1f4a}
+.bubble.show{opacity:1}
+.shake{animation:shake .45s}
+@keyframes shake{20%,60%{translate:-10px 0}40%,80%{translate:10px 0}}
+.hintline{position:absolute;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);left:0;right:0;text-align:center;font-size:.9rem;color:#7b5a8c;padding:0 16px}
+
+/* meme popup */
+.meme{position:fixed;z-index:30;left:50%;top:50%;width:min(320px,86vw);transform:translate(-50%,-50%) scale(.6) rotate(-6deg);opacity:0;pointer-events:none;background:#1d1024;border-radius:16px;padding:14px;box-shadow:0 30px 60px -15px rgba(0,0,0,.5);transition:transform .35s cubic-bezier(.4,1.8,.5,1),opacity .2s}
+.meme.show{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(-2deg);pointer-events:auto}
+.meme .pic{aspect-ratio:1/1;border-radius:10px;display:flex;flex-direction:column;justify-content:space-between;align-items:center;text-align:center;padding:12px;position:relative;overflow:hidden}
+.meme .pic .face{position:absolute;inset:0;display:grid;place-items:center;font-size:8rem;line-height:1}
+.meme .cap{position:relative;font-family:var(--meme);color:#fff;font-size:1.45rem;line-height:1.05;text-transform:uppercase;-webkit-text-stroke:1.2px #000;paint-order:stroke fill;text-shadow:0 2px 0 #000;letter-spacing:.02em}
+.meme .ok{display:block;margin:12px auto 0;border:0;border-radius:12px;padding:8px 18px;background:#f48fb1;color:#3b1f4a;font-weight:600}
+
+/* unlock sequence */
+#unlock{position:fixed;inset:0;z-index:40;background:#2b1238;color:#fff;display:grid;place-items:center;text-align:center;padding:24px}
+#unlock .msg{font-size:clamp(1.3rem,4.5vw,2rem);font-weight:600;min-height:2.6em;max-width:22ch;margin:0 auto}
+#unlock .bar{width:min(360px,80vw);height:16px;border-radius:99px;background:#4c2a5e;margin:18px auto 0;overflow:hidden}
+#unlock .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#f48fb1,#b38ce0);border-radius:99px;transition:width .25s}
+#unlock .pct{margin-top:10px;font-variant-numeric:tabular-nums;color:#d3b5e4}
+#unlock .bigheart{position:fixed;left:50%;top:50%;font-size:40px;transform:translate(-50%,-50%) scale(0);transition:transform 1.1s cubic-bezier(.6,0,.3,1)}
+#unlock .bigheart.go{transform:translate(-50%,-50%) scale(60)}
+#unlock.fade{transition:opacity .6s;opacity:0}
+
+/* ================= SITE ================= */
+#site{position:relative;z-index:1}
+nav{position:sticky;top:0;z-index:5;padding:10px 12px;padding-top:calc(env(safe-area-inset-top,0px) + 10px);margin-top:calc(-1 * env(safe-area-inset-top,0px));display:flex;justify-content:center}
+nav .pill{display:flex;gap:2px;background:color-mix(in srgb,var(--card) 85%,transparent);backdrop-filter:blur(10px);border-radius:99px;padding:5px;box-shadow:0 6px 20px -10px rgba(108,47,143,.5);overflow-x:auto;max-width:100%}
+nav a{color:var(--ink);text-decoration:none;padding:7px 14px;border-radius:99px;white-space:nowrap;font-weight:500;font-size:.95rem}
+nav a:hover{background:var(--blush)}
+section{padding:72px 20px;max-width:1040px;margin:0 auto}
+h2{font-size:clamp(2rem,5vw,3rem);margin:0 0 .2em;color:var(--plum);line-height:1.1}
+:root[data-theme="dark"] h2{color:#e2c4ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) h2{color:#e2c4ff}}
+.sub{color:var(--muted);margin:0 0 36px;max-width:52ch}
+
+/* hero + cake */
+.hero{text-align:center;padding-top:40px}
+.hero h1{font-size:clamp(2.6rem,9vw,5.6rem);line-height:.95;margin:0;color:var(--plum)}
+:root[data-theme="dark"] .hero h1{color:#e2c4ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero h1{color:#e2c4ff}}
+.hero .sub{margin:16px auto 8px}
+.cake{position:relative;width:260px;height:230px;margin:30px auto 8px}
+.cake .tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:18px 18px 12px 12px}
+.cake .t1{bottom:0;width:240px;height:90px;background:#b38ce0}
+.cake .t2{bottom:80px;width:180px;height:72px;background:#f8bbd0}
+.cake .t1::before,.cake .t2::before{content:"";position:absolute;left:0;right:0;top:0;height:22px;border-radius:18px 18px 0 0;background:radial-gradient(circle at 12px 18px,#fff 11px,transparent 12px) 0 0/26px 30px repeat-x,#fff;-webkit-mask:linear-gradient(#000 0 10px,transparent 10px),radial-gradient(circle at 13px 10px,#000 11px,transparent 12px) 0 0/26px 30px repeat-x;mask:linear-gradient(#000 0 10px,transparent 10px),radial-gradient(circle at 13px 10px,#000 11px,transparent 12px) 0 0/26px 30px repeat-x}
+.cake .plate{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:270px;height:16px;border-radius:50%;background:#e6d6f5}
+.candles{position:absolute;bottom:152px;left:50%;transform:translateX(-50%);display:flex;gap:22px}
+.candle{position:relative;width:12px;height:48px;border-radius:4px;background:repeating-linear-gradient(135deg,#fff 0 6px,#6c2f8f 6px 12px);border:0;padding:0}
+.candle .flame{position:absolute;left:50%;top:-24px;width:14px;height:22px;margin-left:-7px;border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;background:radial-gradient(circle at 50% 70%,#fff8d0,#ffcf6b 45%,#ff8a50);box-shadow:0 0 18px 6px rgba(255,207,107,.6);animation:flick .25s ease-in-out infinite alternate;transform-origin:50% 100%}
+@keyframes flick{to{transform:scale(.9,1.08) rotate(3deg)}}
+.candle.out .flame{animation:none;opacity:0;transform:scale(.2);transition:all .3s}
+.candle.out::after{content:"";position:absolute;left:50%;top:-30px;width:6px;height:20px;border-radius:50%;background:rgba(150,140,160,.5);animation:smoke 1.2s forwards}
+@keyframes smoke{to{transform:translateY(-30px) scale(2);opacity:0}}
+.cakehint{color:var(--muted);font-size:.95rem}
+
+/* counter */
+.counter{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:8px}
+.counter div{background:var(--card);border-radius:18px;padding:14px 18px;min-width:96px;text-align:center;box-shadow:0 8px 24px -14px rgba(108,47,143,.6)}
+.counter b{display:block;font-size:2rem;color:var(--plum);font-variant-numeric:tabular-nums;line-height:1.1}
+:root[data-theme="dark"] .counter b{color:#e2c4ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .counter b{color:#e2c4ff}}
+.counter small{color:var(--muted)}
+
+/* journey timeline */
+.timeline{position:relative;padding-left:34px;max-width:680px}
+.timeline::before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:4px;border-radius:4px;background:repeating-linear-gradient(var(--lav) 0 10px,transparent 10px 18px)}
+.stop{position:relative;margin-bottom:28px;background:var(--card);border-radius:20px;padding:16px 20px;box-shadow:0 10px 26px -16px rgba(108,47,143,.55)}
+.stop::before{content:attr(data-e);position:absolute;left:-40px;top:12px;width:32px;height:32px;display:grid;place-items:center;background:var(--bg);border-radius:50%;font-size:1.2rem}
+.stop time{font-size:.85rem;color:var(--pink);font-weight:600}
+.stop h3{margin:2px 0 4px;font-size:1.25rem}
+.stop p{margin:0;color:var(--muted)}
+
+/* moments polaroids */
+.polas{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:26px}
+.pola{perspective:900px;border:0;background:none;padding:0;aspect-ratio:4/5}
+.pola .inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,1.4,.5,1);transform-style:preserve-3d}
+.pola:nth-child(odd) .inner{rotate:-3deg} .pola:nth-child(even) .inner{rotate:2.5deg}
+.pola.flipped .inner{transform:rotateY(180deg)}
+.pola .side{position:absolute;inset:0;backface-visibility:hidden;background:#fff;border-radius:6px;padding:12px 12px 0;box-shadow:0 14px 30px -14px rgba(59,31,74,.55);display:flex;flex-direction:column}
+.pola .photo{flex:1;border-radius:3px;display:grid;place-items:center;font-size:3.4rem;position:relative}
+.pola .photo small{position:absolute;bottom:8px;font-size:.72rem;color:rgba(59,31,74,.6)}
+.pola .label{font-family:var(--hand);font-size:1.5rem;color:#3b1f4a;padding:6px 2px 10px;text-align:center}
+.pola .back{transform:rotateY(180deg);justify-content:center;align-items:center;text-align:center;padding:20px;background:#fff8fb}
+.pola .back p{font-family:var(--hand);font-size:1.45rem;line-height:1.2;color:#3b1f4a;margin:0}
+.tape{position:absolute;top:-10px;left:50%;width:70px;height:22px;margin-left:-35px;background:rgba(179,140,224,.55);rotate:-4deg;z-index:2}
+
+/* letter */
+.envwrap{display:flex;flex-direction:column;align-items:center}
+.envelope{position:relative;width:min(380px,90vw);aspect-ratio:3/2;border:0;padding:0;background:none;margin-top:140px}
+.envelope .body{position:absolute;inset:0;background:#c9a7ec;border-radius:8px;z-index:3;clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%)}
+.envelope .back{position:absolute;inset:0;background:#a979d6;border-radius:8px;z-index:1}
+.envelope .flap{position:absolute;left:0;right:0;top:0;height:58%;background:#b991e3;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .5s,z-index 0s .25s;z-index:4}
+.envelope .seal{position:absolute;left:50%;top:50%;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:#e04a7f;display:grid;place-items:center;font-size:1.5rem;z-index:5;box-shadow:inset 0 -4px 0 rgba(0,0,0,.15);transition:opacity .3s}
+.envelope .peek{position:absolute;left:6%;right:6%;top:8%;bottom:6%;background:#fffaf5;border-radius:4px;z-index:2;transition:transform .6s .4s cubic-bezier(.4,1.3,.5,1)}
+.envelope.open .flap{transform:rotateX(180deg);z-index:0}
+.envelope.open .seal{opacity:0}
+.envelope.open .peek{transform:translateY(-55%)}
+.envelope:not(.open){animation:wiggle 2.4s ease-in-out infinite}
+@keyframes wiggle{0%,80%,100%{rotate:0}85%{rotate:-3deg}90%{rotate:3deg}95%{rotate:-2deg}}
+.paper{width:min(640px,100%);background:#fffaf5;color:#3b1f4a;border-radius:6px;padding:34px 30px;margin-top:-40px;position:relative;z-index:2;box-shadow:0 20px 40px -20px rgba(59,31,74,.5);background-image:repeating-linear-gradient(transparent 0 35px,#f0dcef 35px 36px);font-family:var(--hand);font-size:1.6rem;line-height:36px;opacity:0;transform:translateY(30px);transition:opacity .6s,transform .6s}
+.paper.show{opacity:1;transform:none}
+.paper p{margin:0 0 36px}
+.paper .sign{text-align:right}
+
+/* surprises */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.box{background:var(--card);border-radius:24px;padding:24px;box-shadow:0 12px 30px -18px rgba(108,47,143,.6)}
+.box h3{margin:0 0 6px;font-size:1.35rem}
+.box p.d{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+.btn{border:0;border-radius:14px;padding:11px 18px;background:var(--plum);color:#fff;font-weight:600;transition:transform .15s}
+.btn:active{transform:scale(.95)}
+.jar{font-size:4rem;text-align:center;display:block;margin:0 auto;border:0;background:none;transition:transform .2s}
+.jar:hover{transform:rotate(-8deg) scale(1.05)}
+.reason{min-height:4.5em;text-align:center;font-family:var(--hand);font-size:1.6rem;line-height:1.2;margin-top:10px}
+.coupons{display:grid;gap:10px}
+.coupon{position:relative;display:flex;align-items:center;gap:12px;border:2px dashed var(--lav);border-radius:14px;padding:10px 14px;background:var(--blush);text-align:left;overflow:hidden;width:100%}
+.coupon span.e{font-size:1.6rem}
+.coupon b{display:block;font-weight:600}
+.coupon small{color:var(--muted)}
+.coupon .stamp{position:absolute;right:10px;top:50%;transform:translateY(-50%) rotate(-14deg) scale(2);border:3px solid #e04a7f;color:#e04a7f;font-weight:700;padding:2px 8px;border-radius:8px;opacity:0;transition:all .3s cubic-bezier(.5,1.8,.5,1);font-size:.85rem}
+.coupon.used .stamp{opacity:1;transform:translateY(-50%) rotate(-14deg) scale(1)}
+.coupon.used b,.coupon.used small{opacity:.45}
+.rating input{width:100%;accent-color:var(--plum)}
+.rating .val{font-size:2.6rem;font-weight:700;text-align:center;color:var(--plum)}
+.rating .say{text-align:center;color:var(--muted);min-height:3em}
+
+/* final question */
+.final{text-align:center}
+.qzone{position:relative;height:240px;max-width:520px;margin:0 auto}
+#yes{position:absolute;left:28%;top:40%;transform:translate(-50%,-50%);background:var(--plum);color:#fff;border:0;border-radius:16px;padding:12px 26px;font-weight:700;font-size:1.1rem;transition:transform .3s cubic-bezier(.4,1.8,.5,1);z-index:2}
+#no{position:absolute;left:72%;top:40%;transform:translate(-50%,-50%);background:var(--card);border:2px solid var(--lav);border-radius:16px;padding:12px 26px;font-weight:600;transition:left .25s,top .25s,transform .25s}
+.nosay{color:var(--muted);min-height:1.6em}
+
+
+/* "open when" letter box: a Hairline figure, themed purple by the host page */
+.mailbox{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:center}
+@media (max-width:760px){.mailbox{grid-template-columns:1fr}}
+.hl-plate{position:relative;background:var(--card);border-radius:24px;box-shadow:0 12px 30px -18px rgba(108,47,143,.6);
+  --hairline-plate:#ffffff;--hairline-hi:#6c2f8f;--hairline-edge:#b79ad1;--hairline-mid:#d8c6e8;--hairline-lo:#ede3f6;--hairline-stroke:1.1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hl-plate{--hairline-plate:#3a1f4d;--hairline-hi:#f6dcff;--hairline-edge:#a07fc0;--hairline-mid:#6e4c89;--hairline-lo:#523268}}
+:root[data-theme="dark"] .hl-plate{--hairline-plate:#3a1f4d;--hairline-hi:#f6dcff;--hairline-edge:#a07fc0;--hairline-mid:#6e4c89;--hairline-lo:#523268}
+.hl-read{position:absolute;top:14px;right:18px;z-index:1;font-size:.85rem;color:var(--muted);font-variant-numeric:tabular-nums;pointer-events:none}
+.hl-count{position:absolute;top:14px;left:18px;z-index:1;font-size:.85rem;color:var(--muted);pointer-events:none}
+.note{background:#fffaf5;color:#3b1f4a;border-radius:6px;padding:22px 24px;box-shadow:0 18px 36px -20px rgba(59,31,74,.5);rotate:1.2deg;min-height:220px;
+  background-image:repeating-linear-gradient(transparent 0 33px,#f0dcef 33px 34px);transition:transform .35s cubic-bezier(.4,1.6,.5,1)}
+.note.pop{transform:translateY(-6px) rotate(-1.5deg)}
+.note h3{margin:0 0 4px;font-family:var(--round);font-size:1rem;color:#b2457a;font-weight:600}
+.note p{margin:0;font-family:var(--hand);font-size:1.65rem;line-height:34px}
+
+
+/* ===== v3: extra fun ===== */
+.trail{position:fixed;pointer-events:none;z-index:70;font-size:14px;translate:-50% -50%;animation:trail .9s ease-out forwards}
+@keyframes trail{to{transform:translate(var(--dx),var(--dy)) scale(.2) rotate(var(--r));opacity:0}}
+.tapheart{position:fixed;pointer-events:none;z-index:70;translate:-50% -50%;animation:tap .8s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes tap{0%{transform:scale(.3)}100%{transform:translate(var(--dx),var(--dy)) scale(1.1);opacity:0}}
+.hero{position:relative}
+.balloons{position:absolute;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.hero > *:not(.balloons){position:relative;z-index:1}
+.balloon{position:absolute;bottom:-140px;width:58px;height:72px;border:0;padding:0;border-radius:50% 50% 48% 48%/55% 55% 45% 45%;pointer-events:auto;cursor:crosshair;
+  background:radial-gradient(circle at 32% 28%,rgba(255,255,255,.75) 0 7px,transparent 9px),var(--bc);animation:rise linear infinite,sway 3s ease-in-out infinite alternate}
+.balloon::before{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-5px;border:5px solid transparent;border-bottom-color:var(--bc);rotate:180deg;translate:0 4px}
+.balloon::after{content:"";position:absolute;left:50%;top:100%;width:1.5px;height:62px;background:rgba(108,47,143,.45);translate:0 6px}
+@keyframes rise{to{bottom:115%}}
+@keyframes sway{from{rotate:-6deg;translate:-8px 0}to{rotate:6deg;translate:8px 0}}
+.balloon.popped{animation:pop .25s forwards!important}
+@keyframes pop{to{transform:scale(1.6);opacity:0}}
+.ltr{display:inline-block;transition:transform .2s}
+.ltr:hover{animation:jump .5s cubic-bezier(.3,1.8,.5,1)}
+.wave .ltr{animation:jump .6s cubic-bezier(.3,1.8,.5,1) calc(var(--i) * 45ms) both}
+@keyframes jump{40%{transform:translateY(-.28em) rotate(-6deg) scale(1.08);color:var(--pink)}}
+.timeline .road{position:absolute;left:12px;top:6px;width:4px;border-radius:4px;background:linear-gradient(var(--pink),var(--plum));height:0}
+.timeline .traveler{position:absolute;left:14px;top:0;translate:-50% -50%;font-size:1.6rem;z-index:2;transition:top .1s linear;filter:drop-shadow(0 3px 4px rgba(108,47,143,.35))}
+.stop{opacity:0;transform:translateX(-40px) rotate(-3deg);transition:opacity .5s,transform .6s cubic-bezier(.3,1.6,.5,1)}
+.stop.in{opacity:1;transform:none}
+.pola{transition:transform .25s cubic-bezier(.3,1.8,.5,1)}
+.pola:hover{transform:scale(1.04) rotate(-1.5deg)}
+.jar.shake{animation:jarshake .5s}
+@keyframes jarshake{20%{rotate:-14deg}40%{rotate:12deg}60%{rotate:-8deg}80%{rotate:5deg}}
+.scratch{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/9;background:var(--blush);display:grid;place-items:center;text-align:center;padding:16px}
+.scratch .prize b{display:block;font-size:1.5rem;color:var(--plum)}
+.scratch canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none;cursor:grab;transition:opacity .6s}
+.hugwrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+.hug{--p:0;position:relative;width:132px;height:132px;border-radius:50%;border:0;font-size:3rem;background:conic-gradient(var(--pink) calc(var(--p)*1turn),var(--blush) 0);display:grid;place-items:center;touch-action:none;user-select:none;-webkit-user-select:none;transition:transform .2s}
+.hug::before{content:"";position:absolute;inset:9px;border-radius:50%;background:var(--card)}
+.hug span{position:relative;transition:transform .2s}
+.hug.holding span{animation:squeeze .4s ease-in-out infinite alternate}
+@keyframes squeeze{to{transform:scale(1.25)}}
+.hugcount{color:var(--muted);font-size:.95rem}
+.alert{position:fixed;inset:0;z-index:80;display:grid;place-items:center;background:rgba(43,18,56,.35);padding:20px}
+.alert .win{width:min(360px,92vw);background:#f3eef8;color:#3b1f4a;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.5);animation:winpop .4s cubic-bezier(.3,1.8,.5,1)}
+@keyframes winpop{from{transform:scale(.4) rotate(-8deg);opacity:0}}
+.alert .bar{background:linear-gradient(90deg,#6c2f8f,#b2457a);color:#fff;padding:8px 12px;font-size:.9rem;display:flex;justify-content:space-between}
+.alert .content{padding:18px;display:flex;gap:14px;align-items:flex-start}
+.alert .content .ic{font-size:2.2rem;line-height:1}
+.alert .btns{display:flex;gap:8px;justify-content:flex-end;padding:0 18px 16px}
+.alert .btns button{border:1px solid #b38ce0;background:#fff;border-radius:6px;padding:6px 14px}
+.alert .btns button:first-child{background:#6c2f8f;color:#fff;border-color:#6c2f8f}
+@media (prefers-reduced-motion:reduce){.balloon{display:none}.stop{opacity:1;transform:none}}
+
+
+/* ===== v4: colour + cuteness pass ===== */
+:root{--peach:#ffe1d2;--mint:#d6f5e8;--lemon:#fff3c4;--sky:#dcecff;--rose:#ffd6e7;--lilac:#eadcff;--deep:#3b1f4a;
+  --band-journey:#ffeadf;--band-moments:#dff7ec;--band-letter:#ffe0ee;--band-open:#ece0ff;--band-surprise:#fff5d1;--band-final:linear-gradient(135deg,#ffd6e7,#e3d4ff 50%,#d4ecff)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--band-journey:#3d1d33;--band-moments:#1f3233;--band-letter:#43193a;--band-open:#2e1d4f;--band-surprise:#3e1d45;--band-final:linear-gradient(135deg,#4a1d40,#33215a 50%,#1f2b4f)}}
+:root[data-theme="dark"]{--band-journey:#3d1d33;--band-moments:#1f3233;--band-letter:#43193a;--band-open:#2e1d4f;--band-surprise:#3e1d45;--band-final:linear-gradient(135deg,#4a1d40,#33215a 50%,#1f2b4f)}
+
+/* coloured bands behind each section, like stacked cards */
+#site section{position:relative;isolation:isolate}
+#site section:not(.hero)::before{content:"";position:absolute;z-index:-1;top:14px;bottom:14px;left:calc(50% - 50vw + 10px);right:calc(50% - 50vw + 10px);border-radius:44px}
+#journey::before{background:var(--band-journey)}
+#moments::before{background:var(--band-moments)}
+#letter::before{background:radial-gradient(circle,rgba(244,143,177,.28) 3px,transparent 4px) 0 0/26px 26px,var(--band-letter)}
+#openwhen::before{background:radial-gradient(circle,rgba(179,140,224,.35) 2px,transparent 3px) 0 0/34px 34px,var(--band-open)}
+#surprises::before{background:radial-gradient(circle at 20% 30%,rgba(244,143,177,.25) 0 4px,transparent 5px) 0 0/48px 48px,radial-gradient(circle at 70% 70%,rgba(179,140,224,.3) 0 3px,transparent 4px) 0 0/40px 40px,var(--band-surprise)}
+#site section.final::before{background:var(--band-final)}
+
+/* headings: candy gradient with a squiggle underneath */
+#site h2{background:linear-gradient(90deg,#e0559a,#9c4fd6 55%,#5a7cf0);-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;padding-bottom:12px;
+  background-repeat:no-repeat}
+#site h2::after{content:"";display:block;height:10px;margin-top:4px;width:min(220px,70%);
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='10'%3E%3Cpath d='M0 5 Q5 0 10 5 T20 5 T30 5 T40 5' fill='none' stroke='%23f48fb1' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x 0 0/40px 10px}
+.final h2::after,.hero h2::after{margin-left:auto;margin-right:auto}
+.sticker{position:absolute;font-size:2rem;pointer-events:none;animation:bob 3s ease-in-out infinite alternate;filter:drop-shadow(0 4px 6px rgba(108,47,143,.25))}
+@keyframes bob{to{transform:translateY(-10px) rotate(8deg)}}
+
+/* counters and journey in pastels */
+.counter div{color:var(--deep)}
+.counter div:nth-child(1){background:var(--rose)} .counter div:nth-child(2){background:var(--lilac)}
+.counter div:nth-child(3){background:var(--mint)} .counter div:nth-child(4){background:var(--lemon)}
+#site .counter b{color:#8a2f7a} #site .counter small{color:#7b5a8c}
+.stop{border-left:6px solid #f48fb1}
+.stop:nth-child(3n of .stop){border-left-color:#b38ce0}
+.stop:nth-child(3n+2 of .stop){border-left-color:#7fd1ae}
+.stop time{background:var(--rose);color:#b2457a;padding:2px 10px;border-radius:99px}
+.pola:nth-child(3n+1) .tape{background:rgba(244,143,177,.6)} .pola:nth-child(3n+2) .tape{background:rgba(127,209,174,.6)} .pola:nth-child(3n) .tape{background:rgba(255,207,107,.65)}
+
+/* the letter: pink envelope, stamp, washi tape, doodles */
+.envwrap{position:relative}
+.envelope .back{background:#e5799f}
+.envelope .body{background:#f8a5c2}
+.envelope .flap{background:#f48fb1}
+.envelope .seal{background:#8a3fc0;color:#fff;box-shadow:inset 0 -4px 0 rgba(0,0,0,.2),0 0 0 4px rgba(255,255,255,.35)}
+.envelope .peek{background:repeating-linear-gradient(transparent 0 10px,#fde3ee 10px 11px),#fffaf5}
+.stamp{position:absolute;right:7%;bottom:12%;z-index:4;width:46px;height:54px;background:#fff;border-radius:3px;display:grid;place-items:center;font-size:1.6rem;rotate:8deg;
+  -webkit-mask:radial-gradient(circle,transparent 2.5px,#000 3px) -4px -4px/8px 8px;mask:radial-gradient(circle,transparent 2.5px,#000 3px) -4px -4px/8px 8px;pointer-events:none}
+.paper{background-color:#fffaf5;border:2px solid #ffd6e7}
+.paper::before{content:"";position:absolute;top:-14px;left:50%;width:120px;height:28px;margin-left:-60px;rotate:-3deg;
+  background:repeating-linear-gradient(45deg,rgba(244,143,177,.75) 0 8px,rgba(255,255,255,.75) 8px 16px)}
+.paper::after{content:"💕  ✿  ♡";position:absolute;right:18px;bottom:6px;font-size:1.1rem;color:#e0559a;letter-spacing:4px}
+.paper p:first-child{color:#b2457a}
+.envheart{position:fixed;pointer-events:none;z-index:60;translate:-50% -50%;animation:envup 1.8s ease-out forwards}
+@keyframes envup{to{transform:translate(var(--dx),-180px) rotate(var(--r)) scale(1.3);opacity:0}}
+
+/* open-when: cute plate and a note that changes colour per letter */
+.hl-plate{border:3px dashed #c9a7ec;background:#fff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hl-plate{background:#3a1f4d}}
+:root[data-theme="dark"] .hl-plate{background:#3a1f4d}
+.hl-count,.hl-read{background:var(--rose);color:#8a2f7a;padding:3px 10px;border-radius:99px}
+.note{position:relative;transition:background-color .4s,transform .35s cubic-bezier(.4,1.6,.5,1);border:2px solid rgba(255,255,255,.7)}
+.note .nsticker{position:absolute;top:-22px;right:-12px;font-size:2.6rem;rotate:12deg;transition:transform .4s cubic-bezier(.3,1.8,.5,1)}
+.note.pop .nsticker{transform:scale(1.25) rotate(-10deg)}
+
+/* surprises: every box its own candy colour, with a sticker */
+#surprises .box{position:relative;color:var(--deep);border:3px solid rgba(255,255,255,.8);transition:transform .25s cubic-bezier(.3,1.8,.5,1)}
+#surprises .box:hover{transform:translateY(-4px) rotate(-.6deg)}
+#surprises .box p.d{color:#6b4a7c}
+#surprises .box::after{position:absolute;top:-18px;right:-10px;font-size:2.3rem;rotate:14deg;filter:drop-shadow(0 4px 6px rgba(108,47,143,.25))}
+#surprises .box:nth-child(1){background:#ffe3ef} #surprises .box:nth-child(1)::after{content:"🎟️"}
+#surprises .box:nth-child(2){background:#e6dcff} #surprises .box:nth-child(2)::after{content:"🫂"}
+#surprises .box:nth-child(3){background:#d9f6ea} #surprises .box:nth-child(3)::after{content:"🌈"}
+#surprises .box:nth-child(4){background:#fff0c2} #surprises .box:nth-child(4)::after{content:"💌"}
+#surprises .box:nth-child(5){background:#dcebff} #surprises .box:nth-child(5)::after{content:"⭐"}
+#surprises .box h3{color:#8a2f7a}
+.hug::before{background:#fff}
+#surprises .hug{background:conic-gradient(#f48fb1 calc(var(--p)*1turn),#ffd6e7 0)}
+.coupon{color:var(--deep);border-color:#fff;border-style:dashed;background:#fff}
+.coupon:nth-child(5n+1){background:#ffd6e7} .coupon:nth-child(5n+2){background:#e3d4ff} .coupon:nth-child(5n+3){background:#c8f0de}
+.coupon:nth-child(5n+4){background:#ffeeb0} .coupon:nth-child(5n){background:#d4e6ff}
+.coupon small{color:#6b4a7c}
+.rating .val{color:#8a2f7a}
+.rating .say{color:#6b4a7c}
+.rface{font-size:3rem;text-align:center;transition:transform .3s cubic-bezier(.3,1.8,.5,1)}
+.rface.bump{transform:scale(1.3) rotate(-10deg)}
+.reason{color:#8a2f7a}
+
+/* final question: rainbow yes */
+#yes{background:linear-gradient(90deg,#ff7eb3,#b38ce0,#7fb8ff,#7fd1ae,#ffcf6b,#ff7eb3);background-size:300% 100%;animation:shimmer 3s linear infinite;color:#fff;text-shadow:0 1px 2px rgba(59,31,74,.4);box-shadow:0 10px 24px -10px rgba(156,79,214,.7)}
+@keyframes shimmer{to{background-position:300% 0}}
+#no{background:#fff;color:var(--deep)}
+footer{font-size:1.05rem}
+footer .fh{display:inline-block;animation:bob 1.2s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.sticker,#yes,footer .fh{animation:none}}
+
+
+/* ===== v5: bolder fonts + photo journey ===== */
+:root{--bubble:"Lilita One","Fredoka",ui-rounded,system-ui,sans-serif;--script:"Pacifico","Caveat",cursive}
+#site h2{font-family:var(--bubble);font-weight:400;letter-spacing:.01em;font-size:clamp(2.4rem,6.5vw,3.8rem);line-height:1.05}
+.hero h1{font-family:var(--bubble);font-weight:400;font-size:clamp(3rem,10vw,6.4rem);letter-spacing:.01em}
+#herName{font-family:var(--script);font-size:1.12em;display:inline-block;padding:0 .08em .12em;line-height:1.25}
+#herName .ltr:nth-child(5n+1){color:#e0559a} #herName .ltr:nth-child(5n+2){color:#9c4fd6} #herName .ltr:nth-child(5n+3){color:#5a7cf0}
+#herName .ltr:nth-child(5n+4){color:#f0864b} #herName .ltr:nth-child(5n){color:#3fb58a}
+nav a{font-weight:600}
+.counter b,.box h3,#surprises .box h3,.rating .val,#yes,.hugcount,.coupon b{font-family:var(--bubble);font-weight:400;letter-spacing:.02em}
+.box h3,#surprises .box h3{font-size:1.55rem}
+.counter b{font-size:2.3rem}
+.paper p:first-child{font-family:var(--script);font-size:1.7rem}
+.note h3{font-family:var(--bubble);font-weight:400;font-size:1.15rem;letter-spacing:.02em}
+.pola .label{font-family:var(--script);font-size:1.15rem}
+.sub{font-weight:500}
+footer{font-family:var(--script);font-size:1.3rem}
+
+#journey .timeline{max-width:860px}
+#journey .stop{padding:0;border:0;min-height:270px;border-radius:26px;background:none;display:flex;align-items:flex-end;margin-bottom:34px;
+  box-shadow:0 22px 40px -22px rgba(59,31,74,.7);color:#fff;transition:opacity .5s,transform .6s cubic-bezier(.3,1.6,.5,1)}
+#journey .stop .ph{position:absolute;inset:0;border-radius:inherit;overflow:hidden;transition:transform .6s}
+#journey .stop .ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(32,10,44,.82),rgba(32,10,44,.25) 55%,transparent 80%)}
+#journey .stop .big{position:absolute;right:6%;top:8%;font-size:clamp(5rem,14vw,8.5rem);rotate:-10deg;filter:drop-shadow(0 10px 18px rgba(0,0,0,.25));animation:bob 3.2s ease-in-out infinite alternate}
+#journey .stop .phtag{position:absolute;left:16px;top:14px;z-index:1;background:rgba(255,255,255,.85);color:#6c2f8f;font-size:.75rem;font-weight:600;padding:3px 10px;border-radius:99px}
+#journey .stop .cap{position:relative;z-index:1;padding:22px 24px 22px}
+#journey .stop time{background:rgba(255,255,255,.9);color:#b2457a;font-weight:700}
+#journey .stop h3{font-family:var(--script);font-weight:400;font-size:clamp(1.6rem,4.5vw,2.3rem);margin:8px 0 2px;line-height:1.25;text-shadow:0 3px 12px rgba(0,0,0,.35)}
+#journey .stop p{color:rgba(255,255,255,.92);max-width:46ch;font-weight:500;text-shadow:0 2px 8px rgba(0,0,0,.35)}
+#journey .stop:hover .ph{transform:scale(1.04)}
+#journey .stop::before{background:#fff;box-shadow:0 4px 10px -4px rgba(108,47,143,.6)}
+@media (prefers-reduced-motion:reduce){#journey .stop .big{animation:none}}
+
+
+/* ===== v6: 3D version ===== */
+#bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block}
+#site section:not(.hero)::before{opacity:.86}
+/* extruded 3D type */
+#site h2{filter:drop-shadow(0 2px 0 #f2b8d6) drop-shadow(0 2px 0 #d9a3ec) drop-shadow(0 3px 0 #b98ae0) drop-shadow(0 12px 14px rgba(90,40,120,.28))}
+.hero h1 .ltr{text-shadow:0 1px 0 #e9c9f7,0 2px 0 #dcb4f2,0 3px 0 #cf9fec,0 4px 0 #c18ae6,0 5px 0 #b276de,0 6px 0 #a463d6,0 14px 20px rgba(80,30,110,.35)}
+#herName .ltr{text-shadow:0 1px 0 rgba(0,0,0,.08),0 2px 0 rgba(0,0,0,.08),0 3px 0 rgba(0,0,0,.08),0 4px 0 rgba(0,0,0,.08),0 12px 18px rgba(80,30,110,.3)}
+/* 3D cake */
+#cake3d{position:relative;width:min(440px,92vw);height:340px;margin:10px auto 0;cursor:grab;touch-action:pan-y}
+#cake3d canvas{display:block;width:100%;height:100%}
+#cake3d.ready + .cake{display:none}
+/* tilt cards */
+.tilt3d{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(0);transition:transform .25s ease-out,box-shadow .25s;transform-style:preserve-3d;will-change:transform}
+#surprises .box.tilt3d:hover{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateZ(24px)}
+.counter div.tilt3d:hover,.hl-plate.tilt3d:hover,.note.tilt3d:hover{box-shadow:0 30px 40px -24px rgba(108,47,143,.6)}
+#journey .stop{transform:perspective(1100px) translateY(90px) rotateX(42deg);transform-style:preserve-3d}
+#journey .stop.in{transform:perspective(1100px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg))}
+#journey .stop.in.tilting{transition:transform .2s ease-out}
+#journey .stop .cap{transform:translateZ(46px)}
+#journey .stop .big{transform:translateZ(70px)}
+/* moments: 3D carousel */
+#moments .polas{display:block;position:relative;height:var(--ph,420px);perspective:1500px;perspective-origin:50% 40%;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+#moments .polas.dragging{cursor:grabbing}
+#moments .ring{position:absolute;left:50%;top:30px;width:0;height:0;transform-style:preserve-3d}
+#moments .ring .pola{position:absolute;top:0;aspect-ratio:auto;transform:var(--t);transition:opacity .2s}
+#moments .ring .pola:hover{transform:var(--t) translateZ(30px) scale(1.05)}
+#moments .ring .pola .inner{rotate:none!important}
+.spinhint{text-align:center;color:var(--muted);margin-top:6px}
+@media (prefers-reduced-motion:reduce){.tilt3d{transition:none}}
+
+footer{text-align:center;padding:40px 20px 60px;color:var(--muted)}
+
+/* confetti */
+.confetti{position:fixed;pointer-events:none;z-index:50;top:-40px;animation:fall linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r))}}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 22px);transform:translate(-50%,40px);background:#3b1f4a;color:#fff;padding:10px 18px;border-radius:14px;opacity:0;transition:all .3s;z-index:60;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg3d" aria-hidden="true"></canvas>
+<div class="float-bg" id="floatbg" aria-hidden="true"></div>
+
+<!-- ============ LOGIN ============ -->
+<div id="login">
+  <div class="gate-title">
+    <h1>🔒 Restricted area</h1>
+    <p>This website is for one (1) birthday girl only. Prove it's you.</p>
+  </div>
+  <form class="lockbox" id="lockbox" autocomplete="off">
+    <div class="bubble" id="bubble">nope 🏃‍♀️</div>
+    <label for="pw">Secret password 💜</label>
+    <div class="inrow">
+      <input id="pw" type="password" placeholder="type it if you can catch me">
+      <button type="submit">Enter</button>
+    </div>
+    <div class="attempts" id="attempts"></div>
+  </form>
+  <div class="hintline" id="hintline">Hint: it's what I call you about 300 times a day.</div>
+</div>
+
+<div class="meme" id="meme" role="alertdialog" aria-live="assertive">
+  <div class="pic" id="memepic"><div class="face" id="memeface"></div><div class="cap" id="memetop"></div><div class="cap" id="memebot"></div></div>
+  <button class="ok" id="memeok">Let me try again 😤</button>
+</div>
+
+<div id="unlock" class="hidden">
+  <div>
+    <p class="msg" id="umsg"></p>
+    <div class="bar"><i id="ubar"></i></div>
+    <div class="pct" id="upct"></div>
+  </div>
+  <div class="bigheart" id="bigheart">💜</div>
+</div>
+
+<!-- ============ SITE ============ -->
+<div id="site" class="hidden">
+  <nav><div class="pill">
+    <a href="#home">🎂 Home</a><a href="#journey">🗺️ Journey</a><a href="#moments">📸 Moments</a><a href="#letter">💌 Letter</a><a href="#openwhen">📬 Open when</a><a href="#surprises">🎁 Surprises</a>
+  </div></nav>
+
+  <section class="hero" id="home">
+    <div class="balloons" id="balloons" aria-hidden="true"></div>
+    <h1>Happy Birthday,<br><span id="herName">Cutie</span> 💜</h1>
+    <p class="sub">Welcome to the only website in the world with one user, zero ads, and a developer who is hopelessly in love with her.</p>
+    <div class="cake" id="cake">
+      <div class="candles" id="candles"></div>
+      <div class="tier t2"></div><div class="tier t1"></div><div class="plate"></div>
+    </div>
+    <p class="cakehint" id="cakehint">Make a wish, then tap each candle to blow it out 🕯️</p>
+    <p class="cakehint">Psst: the balloons are poppable 🎈</p>
+
+    <h2 style="font-size:1.6rem;margin-top:48px">We've been together for</h2>
+    <div class="counter" id="counter"></div>
+    <p class="sub" style="margin:14px auto 0">…and I'd pick you again every single second of it.</p>
+  </section>
+
+  <section id="journey">
+    <span class="sticker" aria-hidden="true" style="top:40px;right:6%">🌷</span><span class="sticker" aria-hidden="true" style="top:52%;right:3%;animation-delay:-1s">🦋</span>
+    <h2>Our journey so far</h2>
+    <p class="sub">A highly accurate, totally unbiased history of the best thing that ever happened to me.</p>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <section id="moments">
+    <span class="sticker" aria-hidden="true" style="top:36px;right:7%">📷</span><span class="sticker" aria-hidden="true" style="bottom:40px;left:2%;animation-delay:-1.5s">🌼</span>
+    <h2>Our beautiful moments</h2>
+    <p class="sub">Tap a photo to read what I remember about it.</p>
+    <div class="polas" id="polas"></div>
+  </section>
+
+  <section id="letter">
+    <span class="sticker" aria-hidden="true" style="top:40px;right:8%">💌</span><span class="sticker" aria-hidden="true" style="top:46%;left:3%;animation-delay:-1s">🌸</span><span class="sticker" aria-hidden="true" style="bottom:60px;right:12%;animation-delay:-2s">✨</span>
+    <h2>A letter for you</h2>
+    <p class="sub">Sealed with love. Tap the envelope to open it.</p>
+    <div class="envwrap">
+      <button class="envelope" id="envelope" aria-label="Open the letter">
+        <div class="back"></div><div class="peek"></div><div class="body"></div><div class="flap"></div><div class="seal">💜</div><div class="stamp">🌷</div>
+      </button>
+      <div class="paper" id="paper" aria-live="polite"></div>
+    </div>
+  </section>
+
+
+  <section id="openwhen">
+    <span class="sticker" aria-hidden="true" style="top:34px;right:6%">📮</span><span class="sticker" aria-hidden="true" style="bottom:40px;left:3%;animation-delay:-1.2s">🌙</span>
+    <h2>Open when… letters</h2>
+    <p class="sub">A whole box of little letters, one for every mood. Move over the box (or tap it) and the letter you're on opens itself.</p>
+    <div class="mailbox">
+      <div class="hl-plate">
+        <span class="hl-count" id="hlCount">0 of 8 read</span>
+        <span class="hl-read" id="hlRead">rest</span>
+        <div id="hlStage"></div>
+      </div>
+      <div class="note" id="note" aria-live="polite">
+        <h3 id="noteTitle">Pick a letter</h3>
+        <p id="noteText">Each envelope has something inside for a different kind of day. Go on, open them all.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="surprises">
+    <span class="sticker" aria-hidden="true" style="top:30px;right:6%">🎁</span><span class="sticker" aria-hidden="true" style="top:40%;left:1%;animation-delay:-1.4s">🍭</span><span class="sticker" aria-hidden="true" style="bottom:30px;right:3%;animation-delay:-.7s">🧸</span>
+    <h2>Little surprises</h2>
+    <p class="sub">Some extra things, because one gift was never going to be enough for you.</p>
+    <div class="grid2">
+      <div class="box">
+        <h3>Scratch card</h3>
+        <p class="d">Your real birthday present is hiding under here. Scratch it off with your finger or mouse.</p>
+        <div class="scratch"><div class="prize" id="prize"></div><canvas id="scratch" aria-label="Scratch card"></canvas></div>
+      </div>
+      <div class="box hugwrap">
+        <h3>Hug machine</h3>
+        <p class="d" style="text-align:center">Press and hold to send me a hug. Hold it all the way, no half hugs.</p>
+        <button class="hug" id="hug" aria-label="Press and hold to send a hug"><span>🤗</span></button>
+        <div class="hugcount" id="hugcount">Hugs sent: 0</div>
+      </div>
+
+      <div class="box">
+        <h3>The jar of reasons</h3>
+        <p class="d">Tap the jar for one of the reasons I love you. It never runs out, kind of like the reasons.</p>
+        <button class="jar" id="jar" aria-label="Pull a reason from the jar">🫙</button>
+        <div class="reason" id="reason" aria-live="polite"></div>
+      </div>
+      <div class="box">
+        <h3>Love coupons</h3>
+        <p class="d">Valid forever. Tap one to redeem it. Non-refundable, non-negotiable.</p>
+        <div class="coupons" id="coupons"></div>
+      </div>
+      <div class="box rating">
+        <h3>Rate your boyfriend</h3>
+        <p class="d">Please be honest. (Your answer will be reviewed by the boyfriend.)</p>
+        <div class="rface" id="rface">🥰</div>
+        <div class="val" id="rval">10</div>
+        <input type="range" min="0" max="10" value="10" id="rate" aria-label="Boyfriend rating">
+        <div class="say" id="rsay">Excellent choice. Very accurate.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="final">
+    <span class="sticker" aria-hidden="true" style="top:30px;left:8%">🌈</span><span class="sticker" aria-hidden="true" style="top:40px;right:9%;animation-delay:-1s">💖</span><span class="sticker" aria-hidden="true" style="bottom:40px;left:12%;animation-delay:-2s">🎈</span>
+    <h2>One last question</h2>
+    <p class="sub" style="margin:0 auto 10px">Will you let me celebrate every birthday of yours from now on?</p>
+    <p class="nosay" id="nosay"></p>
+    <div class="qzone" id="qzone">
+      <button id="yes">Yes 💜</button>
+      <button id="no">No</button>
+    </div>
+  </section>
+
+  <footer>Made with way too much love <span class="fh">💜</span> (and a little bit of CSS) by your favourite person <span class="fh" style="animation-delay:-.6s">🌷</span></footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ======= EDIT THESE ======= */
+const CONFIG = {
+  herName: "Cutie",
+  password: "cutie",                     // case-insensitive
+  togetherSince: "2023-02-14T19:00:00",  // when you got together
+  candles: 5,
+  journey: [
+    {e:"👀", date:"The beginning", t:"The day we met", d:"I acted cool. I was not cool. I thought about you the entire way home."},
+    {e:"☕️", date:"A week later", t:"Our first date", d:"I rehearsed what to say. Forgot all of it the moment you smiled."},
+    {e:"💜", date:"Feb 14, 2023", t:"Officially us", d:"Best decision either of us ever made. Possibly the best decision anyone ever made."},
+    {e:"🍕", date:"Every weekend", t:"The great 'where should we eat' debate", d:"Still unresolved. We always end up getting what you wanted anyway."},
+    {e:"✈️", date:"Last summer", t:"Our first trip together", d:"Lost the hotel, found the best view of my life. (It was you.)"},
+    {e:"🎂", date:"Today", t:"Your birthday", d:"The world got you on this day. I'm so glad it did."}
+  ],
+  moments: [
+    {e:"🌅", bg:"linear-gradient(160deg,#ffcf9e,#f48fb1)", label:"that sunset", back:"You said 'take a picture of the sky' and I only took pictures of you."},
+    {e:"🍦", bg:"linear-gradient(160deg,#ffe3f0,#c9a7ec)", label:"ice cream date", back:"You stole half of mine. I let you. I'll always let you."},
+    {e:"🎡", bg:"linear-gradient(160deg,#c3b5ff,#8fd3ff)", label:"the fair", back:"You screamed the whole ride and then wanted to go again."},
+    {e:"🐶", bg:"linear-gradient(160deg,#ffe7b3,#ffb38a)", label:"you + every dog", back:"You've never met a dog you didn't say 'hiii baby' to. Iconic."},
+    {e:"🌧️", bg:"linear-gradient(160deg,#b3c7ff,#7e6bd6)", label:"rainy day", back:"Stuck inside, movie on, your head on my shoulder. Perfect day."},
+    {e:"📸", bg:"linear-gradient(160deg,#f6d1ff,#ff9ec4)", label:"the 47th selfie", back:"We took 47 to get one you liked. Worth it."}
+  ],
+  letter: [
+    "My dearest Cutie,",
+    "Happy birthday to the person who makes ordinary days feel like something worth remembering.",
+    "I don't think I ever told you how much I love the little things. The way you laugh at your own jokes before you finish them. The way you get excited about food. The way you look at me when you think I'm not noticing. I always notice.",
+    "You've been my calm on bad days and my favourite noise on good ones. Being with you feels like home, wherever we are.",
+    "I hope this year gives you everything you've been wishing for, and if it doesn't, I'll be right here trying my best to.",
+    "Thank you for choosing me. I'll keep choosing you, today and every day after.",
+    "Forever yours 💜"
+  ],
+  reasons: [
+    "Your laugh. Specifically the one where you snort a little.",
+    "You make me want to be a better person, and also eat more snacks.",
+    "You remember tiny things I said months ago.",
+    "You're the first person I want to tell everything to.",
+    "The way you say my name when you're sleepy.",
+    "You're beautiful, and somehow even more beautiful on the inside.",
+    "You hold my hand like it's the most normal thing in the world.",
+    "You make grocery shopping feel like a date.",
+    "You believe in me even when I don't.",
+    "Honestly? Everything. The jar is just being dramatic."
+  ],
+  openWhen: [
+    {t:"Open when you miss me", p:"I'm probably missing you more. Close your eyes, I'm giving you the biggest hug right now."},
+    {t:"Open when you can't sleep", p:"Think about our silliest inside joke. You're smiling, aren't you? Goodnight, my love."},
+    {t:"Open when you're stressed", p:"You've handled every hard thing life has thrown at you so far. I'm so proud of you. Breathe."},
+    {t:"Open when you're hungry", p:"This letter is valid for one emergency snack run. Text me. I'm already putting my shoes on."},
+    {t:"Open when you doubt yourself", p:"You are more than enough. You're kind, clever and the prettiest girl I know. Fact."},
+    {t:"Open when we've had a fight", p:"I'm sorry. I love you more than I love being right. (Also you're cute when you're mad.)"},
+    {t:"Open when you're happy", p:"Call me and tell me everything. Your happy is my favourite thing in the world."},
+    {t:"Open on your birthday", p:"Happy birthday, my love. Thank you for being born, and for choosing me. 💜"}
+  ],
+  realGift: {big:"A surprise dinner date 🍝", small:"This Saturday, 8 pm. Dress cute (you always do)."},
+  coupons: [
+    {e:"💆‍♀️", t:"One full massage", s:"No 'is that enough?' allowed"},
+    {e:"🍫", t:"Snack delivery on demand", s:"Any time, any craving"},
+    {e:"🏆", t:"Win one argument instantly", s:"Even if you're wrong (you're never wrong)"},
+    {e:"🎬", t:"You pick the movie", s:"No complaints. No phone. Full attention."},
+    {e:"🍽️", t:"I do the dishes for a week", s:"Without being asked. Yes, really."}
+  ]
+};
+/* ========================== */
+
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = id => document.getElementById(id);
+const rand = (a,b) => a + Math.random()*(b-a);
+const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+function toast(msg,ms=2200){const t=$('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),ms);}
+function confetti(n=60,set=['💜','💖','✨','🎉','💗','🎈']){
+  if(reduce)return;
+  for(let i=0;i<n;i++){const s=document.createElement('span');s.className='confetti';s.textContent=pick(set);
+    s.style.left=rand(0,100)+'vw';s.style.fontSize=rand(16,34)+'px';s.style.setProperty('--dx',rand(-120,120)+'px');s.style.setProperty('--r',rand(-540,540)+'deg');
+    s.style.animationDuration=rand(2.2,4.2)+'s';s.style.animationDelay=rand(0,.6)+'s';document.body.appendChild(s);setTimeout(()=>s.remove(),5200);}
+}
+
+/* floating hearts */
+(function(){const bg=$('floatbg');if(reduce)return;for(let i=0;i<16;i++){const s=document.createElement('span');s.textContent=pick(['💜','💗','🤍','💕']);
+  s.style.left=rand(0,100)+'%';s.style.fontSize=rand(14,30)+'px';s.style.animationDuration=rand(12,26)+'s';s.style.animationDelay=-rand(0,26)+'s';bg.appendChild(s);}})();
+
+/* ============ LOGIN: the runaway box ============ */
+const box=$('lockbox'), bubble=$('bubble'), pw=$('pw');
+let dodges=0, wrong=0;
+const MAX_DODGE = matchMedia('(pointer:coarse)').matches ? 3 : 6;
+const dodgeLines=["nope 🏃‍♀️","too slow! 😜","catch me first","hehe 🙈","almost…","okay okay I'm tired 😮‍💨"];
+function moveBox(){
+  const w=box.offsetWidth,h=box.offsetHeight,pad=14;
+  const top0=window.innerHeight*0.22;
+  box.classList.add('moved');
+  box.style.left=rand(pad,Math.max(pad,innerWidth-w-pad))+'px';
+  box.style.top=rand(top0,Math.max(top0,innerHeight-h-60))+'px';
+}
+function say(t){bubble.textContent=t;bubble.classList.add('show');clearTimeout(bubble._h);bubble._h=setTimeout(()=>bubble.classList.remove('show'),1100);}
+function tryDodge(e){
+  if(dodges>=MAX_DODGE)return false;
+  if(e&&e.cancelable&&e.type==='touchstart')e.preventDefault();
+  say(dodgeLines[Math.min(dodges,dodgeLines.length-1)]);dodges++;moveBox();
+  if(dodges===MAX_DODGE)setTimeout(()=>toast("Fine. The box gave up running. You're too fast for it 💜"),400);
+  return true;
+}
+box.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')tryDodge(e);});
+box.addEventListener('touchstart',tryDodge,{passive:false});
+
+const memes=[
+  {face:"🤨",bg:"linear-gradient(#7e57c2,#4a2a7a)",top:"Wrong password?",bot:"Are you even my girlfriend"},
+  {face:"💀",bg:"linear-gradient(#f06292,#8e2a5c)",top:"Bestie",bot:"that ain't it"},
+  {face:"🤖",bg:"linear-gradient(#5c6bc0,#283070)",top:"Error 404",bot:"correct password not found"},
+  {face:"😐",bg:"linear-gradient(#9575cd,#512d82)",top:"Me watching you",bot:"type that with full confidence"},
+  {face:"🚔",bg:"linear-gradient(#26324f,#0f1426)",top:"Calling the F.B.I.",bot:"Federal Bae Investigation"},
+  {face:"🙈",bg:"linear-gradient(#ff8a80,#b23a63)",top:"Hint",bot:"it's literally what I call you"},
+  {face:"🥲",bg:"linear-gradient(#ba68c8,#6a1b9a)",top:"After all we've been through",bot:"you don't know the password"},
+  {face:"🐌",bg:"linear-gradient(#81c784,#2e7d4f)",top:"The box escaping",bot:"vs you trying to catch it"}
+];
+let memeIdx=0;
+function showMeme(){
+  const m=memes[memeIdx++%memes.length];
+  $('memeface').textContent=m.face;$('memepic').style.background=m.bg;$('memetop').textContent=m.top;$('memebot').textContent=m.bot;
+  $('meme').classList.add('show');$('memeok').focus();
+}
+$('memeok').addEventListener('click',()=>{$('meme').classList.remove('show');moveBox();setTimeout(()=>pw.focus(),400);});
+
+box.addEventListener('submit',e=>{
+  e.preventDefault();
+  const v=pw.value.trim().toLowerCase();
+  if(!v){say("type something first 😑");box.classList.remove('shake');void box.offsetWidth;box.classList.add('shake');return;}
+  if(v===CONFIG.password.toLowerCase()){unlock();return;}
+  wrong++;pw.value='';
+  box.classList.remove('shake');void box.offsetWidth;box.classList.add('shake');
+  $('attempts').textContent=`Wrong attempts: ${wrong}. Suspicious. 👀`;
+  const p=CONFIG.password;
+  if(wrong===3)$('hintline').textContent=`Bigger hint: it starts with "${p[0]}" and you are one.`;
+  if(wrong>=5)$('hintline').textContent=`Okay fine, I'll help: ${p[0]}${'_ '.repeat(p.length-2)}${p.at(-1)} (${p.length} letters)`;
+  setTimeout(showMeme,350);
+});
+
+/* ============ UNLOCK SEQUENCE ============ */
+const wait=ms=>new Promise(r=>setTimeout(r,reduce?Math.min(ms,150):ms));
+async function fillBar(from,to,ms){const bar=$('ubar'),pct=$('upct');const steps=20;for(let i=1;i<=steps;i++){const v=Math.round(from+(to-from)*i/steps);bar.style.width=v+'%';pct.textContent=v+'%';await wait(ms/steps);}}
+async function unlock(){
+  $('meme').classList.remove('show');
+  const u=$('unlock'),msg=$('umsg');u.classList.remove('hidden');
+  msg.textContent="Password correct ✅ Running face scan… 📸";await fillBar(0,100,1100);
+  msg.textContent="Face recognised: the prettiest girl alive 😍";await wait(1300);
+  msg.textContent="Checking cuteness levels… 📈";$('ubar').style.width='0';await fillBar(0,100,700);
+  msg.textContent="⚠️ Warning: cuteness exceeds maximum allowed value";await wait(1500);
+  msg.textContent="Loading feelings…";$('ubar').style.width='0';await fillBar(0,99,1300);
+  msg.textContent="Stuck at 99%. Too many feelings to load 😵‍💫";await wait(1700);
+  await fillBar(99,100,200);msg.textContent="Done. Welcome home, "+CONFIG.herName+" 💜";await wait(900);
+  $('bigheart').classList.add('go');await wait(1000);
+  $('login').remove();$('site').classList.remove('hidden');window.scrollTo(0,0);
+  u.classList.add('fade');confetti(80);setTimeout(()=>u.remove(),700);
+}
+
+/* ============ SITE ============ */
+$('herName').textContent=CONFIG.herName;
+document.title=`Happy Birthday, ${CONFIG.herName} 💜`;
+
+/* cake + happy birthday tune (public-domain melody) via WebAudio */
+(function(){
+  const holder=$('candles');let out=0;
+  for(let i=0;i<CONFIG.candles;i++){const c=document.createElement('button');c.className='candle';c.setAttribute('aria-label','Blow out candle '+(i+1));c.innerHTML='<span class="flame"></span>';
+    c.addEventListener('click',()=>{if(c.classList.contains('out'))return;c.classList.add('out');out++;
+      if(out===CONFIG.candles){$('cakehint').textContent="Your wish has been sent to the universe ✨ Happy birthday!";confetti(90);playTune();}
+      else $('cakehint').textContent=`${CONFIG.candles-out} more to go… blow harder 🌬️`;});
+    holder.appendChild(c);}
+  function playTune(){
+    try{const ctx=new (window.AudioContext||window.webkitAudioContext)();
+      const N={G4:392,A4:440,B4:493.9,C5:523.3,D5:587.3,E5:659.3,F5:698.5,G5:784};
+      const song=[['G4',.75],['G4',.25],['A4',1],['G4',1],['C5',1],['B4',2],['G4',.75],['G4',.25],['A4',1],['G4',1],['D5',1],['C5',2],['G4',.75],['G4',.25],['G5',1],['E5',1],['C5',1],['B4',1],['A4',2],['F5',.75],['F5',.25],['E5',1],['C5',1],['D5',1],['C5',2.5]];
+      let t=ctx.currentTime+.1;const beat=.38;
+      song.forEach(([n,d])=>{const o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.frequency.value=N[n];
+        g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.18,t+.03);g.gain.exponentialRampToValueAtTime(.001,t+d*beat*.95);
+        o.connect(g).connect(ctx.destination);o.start(t);o.stop(t+d*beat);t+=d*beat;});
+    }catch(e){}
+  }
+})();
+
+/* together counter */
+(function(){
+  const host=$('counter'),start=new Date(CONFIG.togetherSince).getTime();
+  const units=[['days',86400],['hours',3600],['minutes',60],['seconds',1]];
+  host.innerHTML=units.map(([u])=>`<div><b id="c-${u}">0</b><small>${u}</small></div>`).join('');
+  function tick(){let s=Math.max(0,Math.floor((Date.now()-start)/1000));units.forEach(([u,n])=>{$('c-'+u).textContent=Math.floor(s/n).toLocaleString();s%=n;});}
+  tick();setInterval(tick,1000);
+})();
+
+/* journey */
+/* journey: photo cards with the story written over them. Add img:"photo.jpg" (or a data: URI) to any stop to use a real photo. */
+const SCENES=[
+  "radial-gradient(circle at 58% 18%,#ffe9a8 0 30px,transparent 36px),linear-gradient(165deg,#25184f,#6b3a9c 55%,#f08bb5)",
+  "radial-gradient(circle at 20% 80%,rgba(255,255,255,.25) 0 60px,transparent 62px),linear-gradient(160deg,#f7b267,#e46b84 70%,#a64a9e)",
+  "radial-gradient(circle at 50% 120%,#ffd1e6 0 40%,transparent 41%),linear-gradient(170deg,#d64d93,#8a3fc0)",
+  "radial-gradient(circle at 80% 20%,#fff6b0 0 46px,transparent 48px),linear-gradient(160deg,#ffcf6b,#ff8a65 70%,#e2557f)",
+  "radial-gradient(circle at 70% 30%,#fffbe6 0 38px,transparent 40px),linear-gradient(180deg,#7fb8ff,#a7d8ff 55%,#4fb3c9 56%,#2f7fa8)",
+  "radial-gradient(circle,rgba(255,255,255,.5) 2px,transparent 3px) 0 0/22px 22px,linear-gradient(135deg,#ff7eb3,#9c4fd6 50%,#5a7cf0)"
+];
+$('timeline').innerHTML=CONFIG.journey.map((j,k)=>{
+  const bg=j.img?`url('${j.img}') center/cover`:SCENES[k%SCENES.length];
+  return `<div class="stop" data-e="${j.e}"><div class="ph" style="background:${bg}">${j.img?'':`<span class="big">${j.e}</span><small class="phtag">your photo goes here</small>`}</div>
+    <div class="cap"><time>${j.date}</time><h3>${j.t}</h3><p>${j.d}</p></div></div>`;
+}).join('');
+
+/* moments */
+(function(){
+  const host=$('polas');
+  CONFIG.moments.forEach(m=>{const b=document.createElement('button');b.className='pola';b.setAttribute('aria-label','Flip photo: '+m.label);
+    const photo=m.img?`<div class="photo" style="background:url('${m.img}') center/cover"></div>`:`<div class="photo" style="background:${m.bg}">${m.e}<small>your photo goes here</small></div>`;
+    b.innerHTML=`<div class="inner"><div class="tape"></div><div class="side front">${photo}<div class="label">${m.label}</div></div><div class="side back"><p>${m.back}</p></div></div>`;
+    b.addEventListener('click',()=>b.classList.toggle('flipped'));host.appendChild(b);});
+})();
+
+/* letter: open + handwrite */
+(function(){
+  const env=$('envelope'),paper=$('paper');let opened=false;
+  env.addEventListener('click',async()=>{
+    if(opened)return;opened=true;env.classList.add('open');await wait(1100);paper.classList.add('show');
+    for(let i=0;i<CONFIG.letter.length;i++){
+      const p=document.createElement('p');if(i===CONFIG.letter.length-1)p.className='sign';paper.appendChild(p);
+      const txt=CONFIG.letter[i];
+      if(reduce){p.textContent=txt;continue;}
+      for(let c=0;c<=txt.length;c+=2){p.textContent=txt.slice(0,c);await new Promise(r=>setTimeout(r,16));}
+      p.textContent=txt;await new Promise(r=>setTimeout(r,250));
+    }
+    confetti(30,['💜','💌','💗']);
+  });
+})();
+
+/* jar of reasons */
+(function(){let last=-1;$('jar').addEventListener('click',()=>{let i;do{i=Math.floor(Math.random()*CONFIG.reasons.length)}while(i===last&&CONFIG.reasons.length>1);last=i;
+  const r=$('reason');r.style.opacity=0;setTimeout(()=>{r.textContent=CONFIG.reasons[i];r.style.transition='opacity .3s';r.style.opacity=1;},150);});})();
+
+/* coupons (remembered on this device) */
+(function(){
+  let used={};try{used=JSON.parse(localStorage.getItem('bday-coupons')||'{}')}catch(e){}
+  const host=$('coupons');
+  CONFIG.coupons.forEach((c,i)=>{const b=document.createElement('button');b.className='coupon'+(used[i]?' used':'');
+    b.innerHTML=`<span class="e">${c.e}</span><span><b>${c.t}</b><small>${c.s}</small></span><span class="stamp">REDEEMED</span>`;
+    b.addEventListener('click',()=>{if(b.classList.contains('used')){toast("Already redeemed. Nice try though 😏");return;}
+      b.classList.add('used');used[i]=1;try{localStorage.setItem('bday-coupons',JSON.stringify(used))}catch(e){}
+      toast(`Coupon redeemed: ${c.t}. Your boyfriend has been notified 📲`,2600);});
+    host.appendChild(b);});
+})();
+
+/* boyfriend rating: only correct answers accepted */
+(function(){
+  const r=$('rate'),v=$('rval'),s=$('rsay');
+  const lowLines=["Hmm, the slider seems broken. Let me fix that for you 🔧","Invalid rating detected. Restoring correct value…","Sorry, that number is not available in your region 🌍","Error: boyfriend too good for that score"];
+  let k=0;
+  r.addEventListener('input',()=>{v.textContent=r.value;s.textContent=r.value>=9?"Excellent choice. Very accurate.":"…are you sure about that? 🤨";});
+  r.addEventListener('change',()=>{if(+r.value<9){s.textContent=lowLines[k++%lowLines.length];setTimeout(()=>{r.value=10;v.textContent='10';},500);}});
+})();
+
+/* final question: the No button runs away */
+(function(){
+  const no=$('no'),yes=$('yes'),zone=$('qzone'),say=$('nosay');let tries=0,scale=1;
+  const lines=["Wrong button 🙃","Are you sure? Like, sure sure?","The No button has left the chat","Think about the cake 🎂","I'll pretend I didn't see that","Yes is right there 👉"];
+  function run(e){if(e&&e.cancelable&&e.type==='touchstart')e.preventDefault();
+    tries++;scale=Math.min(scale+.18,2.4);yes.style.transform=`translate(-50%,-50%) scale(${scale})`;
+    no.style.left=rand(10,90)+'%';no.style.top=rand(10,90)+'%';no.style.transform=`translate(-50%,-50%) scale(${Math.max(.45,1-tries*.08)})`;
+    say.textContent=lines[(tries-1)%lines.length];}
+  no.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')run();});
+  no.addEventListener('touchstart',run,{passive:false});
+  no.addEventListener('click',run);
+  yes.addEventListener('click',()=>{say.textContent="Knew it 💜 Happy birthday, "+CONFIG.herName+". I love you.";no.style.display='none';yes.textContent="Yes, forever 💜";confetti(120);});
+})();
+</script>
+
+
+<script id="v3-fun">
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const fine = matchMedia('(pointer:fine)').matches;
+  const onSite = () => !$('site').classList.contains('hidden');
+
+  /* sparkle trail behind the cursor, and hearts wherever she taps */
+  if (!reduce && fine) {
+    let last = 0;
+    addEventListener('pointermove', (e) => {
+      const now = performance.now(); if (now - last < 45) return; last = now;
+      const t = document.createElement('span'); t.className = 'trail'; t.textContent = pick(['✨','💜','💗','⭐']);
+      t.style.left = e.clientX + 'px'; t.style.top = e.clientY + 'px';
+      t.style.setProperty('--dx', rand(-20,20)+'px'); t.style.setProperty('--dy', rand(10,40)+'px'); t.style.setProperty('--r', rand(-90,90)+'deg');
+      document.body.appendChild(t); setTimeout(() => t.remove(), 900);
+    });
+  }
+  addEventListener('pointerdown', (e) => {
+    if (reduce || !onSite() || e.target.closest('button,a,input,canvas,.pola')) return;
+    for (let k = 0; k < 6; k++) {
+      const h = document.createElement('span'); h.className = 'tapheart'; h.textContent = pick(['💜','💗','💕']);
+      h.style.left = e.clientX + 'px'; h.style.top = e.clientY + 'px'; h.style.fontSize = rand(14,26)+'px';
+      const a = (k / 6) * Math.PI * 2; h.style.setProperty('--dx', Math.cos(a)*rand(30,60)+'px'); h.style.setProperty('--dy', Math.sin(a)*rand(30,60)+'px');
+      document.body.appendChild(h); setTimeout(() => h.remove(), 800);
+    }
+  });
+
+  /* bouncy title letters, with one wave when she arrives */
+  const h1 = document.querySelector('.hero h1'); let li = 0;
+  (function split(node) {
+    [...node.childNodes].forEach((c) => {
+      if (c.nodeType === 3) {
+        const frag = document.createDocumentFragment();
+        Array.from(c.textContent).forEach((ch) => {
+          if (ch === ' ' || ch === '\n') { frag.appendChild(document.createTextNode(ch)); return; }
+          const sp = document.createElement('span'); sp.className = 'ltr'; sp.textContent = ch; sp.style.setProperty('--i', li++); frag.appendChild(sp);
+        });
+        c.replaceWith(frag);
+      } else if (c.nodeType === 1 && c.tagName !== 'BR') split(c);
+    });
+  })(h1);
+  new MutationObserver(() => { if (onSite()) { h1.classList.add('wave'); setTimeout(() => h1.classList.remove('wave'), 2500); } })
+    .observe($('site'), { attributes: true, attributeFilter: ['class'] });
+
+  /* poppable balloons, each with something to say */
+  const popLines = ['POP! You get one (1) kiss 💋','POP! That one had a hug in it 🤗','Balloon says: you look cute today','POP! +10 cuteness points','You popped my heart. Jk it was a balloon','POP! Happy birthday from this balloon 🎈','That balloon had a secret: I love you'];
+  const colors = ['#b38ce0','#f48fb1','#9c6ade','#ffb3cf','#c9a7ec','#e57fb0'];
+  function balloon(delay) {
+    const b = document.createElement('button'); b.className = 'balloon'; b.setAttribute('aria-label', 'Pop a balloon');
+    const side = Math.random() < .5 ? rand(1, 17) : rand(80, 94);
+    b.style.left = side + '%'; b.style.setProperty('--bc', pick(colors));
+    b.style.animationDuration = rand(10, 16) + 's,' + rand(2.4, 3.6) + 's'; b.style.animationDelay = (delay ?? -rand(0, 12)) + 's,0s';
+    const sc = rand(.75, 1.1); b.style.transform = `scale(${sc})`;
+    b.addEventListener('click', (e) => {
+      if (b.classList.contains('popped')) return;
+      b.classList.add('popped'); toast(pick(popLines));
+      const r = b.getBoundingClientRect();
+      for (let k = 0; k < 10; k++) {
+        const h = document.createElement('span'); h.className = 'tapheart'; h.textContent = pick(['✨','🎊','💜']);
+        h.style.left = (r.left + r.width/2) + 'px'; h.style.top = (r.top + r.height/2) + 'px';
+        const a = (k/10) * Math.PI * 2; h.style.setProperty('--dx', Math.cos(a)*70+'px'); h.style.setProperty('--dy', Math.sin(a)*70+'px');
+        document.body.appendChild(h); setTimeout(() => h.remove(), 800);
+      }
+      setTimeout(() => { b.remove(); $('balloons').appendChild(balloon(rand(1, 4))); }, 260);
+    });
+    return b;
+  }
+  for (let k = 0; k < 7; k++) $('balloons').appendChild(balloon());
+
+  /* the journey: a road that fills as she scrolls, with the two of you travelling along it */
+  const tl = $('timeline');
+  const road = document.createElement('div'); road.className = 'road';
+  const who = document.createElement('div'); who.className = 'traveler'; who.textContent = '💑';
+  tl.prepend(road); tl.appendChild(who);
+  function travel() {
+    const r = tl.getBoundingClientRect(), h = tl.offsetHeight - 12;
+    const t = Math.min(1, Math.max(0, (innerHeight * 0.6 - r.top) / r.height));
+    road.style.height = (t * h) + 'px'; who.style.top = (6 + t * h) + 'px';
+  }
+  addEventListener('scroll', travel, { passive: true }); addEventListener('resize', travel); travel();
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .3 });
+  document.querySelectorAll('.stop').forEach((st) => io.observe(st));
+
+  /* the jar shakes before it gives up a reason */
+  $('jar').addEventListener('click', () => { const j = $('jar'); j.classList.remove('shake'); void j.offsetWidth; j.classList.add('shake'); });
+
+  /* scratch card */
+  (function () {
+    $('prize').innerHTML = `<div><b>${CONFIG.realGift.big}</b><span>${CONFIG.realGift.small}</span></div>`;
+    const cv = $('scratch'), ctx = cv.getContext('2d'); let done = false, drawn = false;
+    function paint() {
+      const r = cv.getBoundingClientRect(); if (!r.width) return;
+      cv.width = r.width * devicePixelRatio; cv.height = r.height * devicePixelRatio; drawn = true;
+      const g = ctx.createLinearGradient(0, 0, cv.width, cv.height); g.addColorStop(0, '#9c6ade'); g.addColorStop(1, '#f48fb1');
+      ctx.globalCompositeOperation = 'source-over'; ctx.fillStyle = g; ctx.fillRect(0, 0, cv.width, cv.height);
+      ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.font = `600 ${18 * devicePixelRatio}px Fredoka, sans-serif`; ctx.textAlign = 'center';
+      ctx.fillText('✨ scratch me ✨', cv.width / 2, cv.height / 2 + 6 * devicePixelRatio);
+    }
+    new IntersectionObserver(([e]) => { if (e.isIntersecting && !drawn) paint(); }).observe(cv);
+    let down = false;
+    function scratch(e) {
+      if (!down || done) return; e.preventDefault();
+      const r = cv.getBoundingClientRect(), x = (e.clientX - r.left) * devicePixelRatio, y = (e.clientY - r.top) * devicePixelRatio;
+      ctx.globalCompositeOperation = 'destination-out'; ctx.beginPath(); ctx.arc(x, y, 22 * devicePixelRatio, 0, Math.PI * 2); ctx.fill();
+    }
+    function check() {
+      const d = ctx.getImageData(0, 0, cv.width, cv.height).data; let clear = 0;
+      for (let k = 3; k < d.length; k += 64) if (d[k] === 0) clear++;
+      if (clear / (d.length / 64) > .5 && !done) { done = true; cv.style.opacity = 0; setTimeout(() => cv.remove(), 600); confetti(80); toast('Surprise!! 🎁 Clear your Saturday.'); }
+    }
+    cv.addEventListener('pointerdown', (e) => { down = true; cv.setPointerCapture(e.pointerId); scratch(e); });
+    cv.addEventListener('pointermove', scratch);
+    cv.addEventListener('pointerup', () => { down = false; check(); });
+    cv.addEventListener('pointercancel', () => { down = false; });
+  })();
+
+  /* hug machine: hold to fill the ring */
+  (function () {
+    const b = $('hug'); let start = 0, raf = 0, count = 0;
+    const HOLD = 1500, weak = ['That was a weak hug 😤 Hold longer!','Half a hug? Unacceptable.','Hug interrupted. Try again 🫠'];
+    const good = ['Hug delivered 📦💜','Hug received. Rating: 10/10','That one was a big one 🥹','Bear hug unlocked 🐻'];
+    function tick() {
+      const p = Math.min(1, (performance.now() - start) / HOLD); b.style.setProperty('--p', p);
+      if (p >= 1) { finish(true); return; } raf = requestAnimationFrame(tick);
+    }
+    function finish(ok) {
+      if (!start) return; cancelAnimationFrame(raf); start = 0; b.classList.remove('holding'); b.style.setProperty('--p', 0);
+      if (ok) { count++; $('hugcount').textContent = 'Hugs sent: ' + count; toast(pick(good)); confetti(25, ['🤗','💜','💗']); }
+      else toast(pick(weak));
+    }
+    b.addEventListener('pointerdown', (e) => { e.preventDefault(); start = performance.now(); b.classList.add('holding'); raf = requestAnimationFrame(tick); });
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach((ev) => b.addEventListener(ev, () => finish(false)));
+    b.addEventListener('contextmenu', (e) => e.preventDefault());
+  })();
+
+  /* a fake system alert, once, a little while after she gets in */
+  let alerted = false;
+  new MutationObserver(() => {
+    if (!onSite() || alerted) return; alerted = true;
+    setTimeout(() => {
+      const a = document.createElement('div'); a.className = 'alert'; a.setAttribute('role', 'alertdialog');
+      a.innerHTML = `<div class="win"><div class="bar"><span>System alert</span><span>✕</span></div>
+        <div class="content"><div class="ic">⚠️</div><div><b>Birthday girl detected.</b><br>Deploying unlimited hugs, kisses and snacks. This cannot be undone.</div></div>
+        <div class="btns"><button>Accept hugs</button><button>Also accept hugs</button></div></div>`;
+      a.querySelectorAll('button').forEach((x) => x.addEventListener('click', () => { a.remove(); confetti(40); toast('Hugs deployed successfully 💜'); }));
+      document.body.appendChild(a); a.querySelector('button').focus();
+    }, 25000);
+  }).observe($('site'), { attributes: true, attributeFilter: ['class'] });
+})();
+</script>
+
+<script id="v4-cute">
+(() => {
+  const $ = (id) => document.getElementById(id);
+  /* the open-when note changes colour and sticker with each letter */
+  const note = $('note'); const st = document.createElement('span'); st.className = 'nsticker'; st.textContent = '📬'; note.appendChild(st);
+  const tints = ['#ffe3ef','#e6dcff','#d9f6ea','#fff0c2','#dcebff','#ffe1d2','#f3dcff','#ffd6e7'];
+  const stickers = ['🥺','🌙','🧘‍♀️','🍟','🌟','🫶','🎉','🎂'];
+  new MutationObserver(() => {
+    const m = /Letter (\d+)/.exec($('noteTitle').textContent); if (!m) return;
+    const i = Number(m[1]) - 1; note.style.backgroundColor = tints[i % tints.length]; st.textContent = stickers[i % stickers.length];
+  }).observe($('noteTitle'), { childList: true, characterData: true, subtree: true });
+
+  /* hearts float out of the envelope when it opens */
+  $('envelope').addEventListener('click', () => {
+    if (reduce || $('envelope').dataset.burst) return; $('envelope').dataset.burst = 1;
+    const r = $('envelope').getBoundingClientRect();
+    for (let k = 0; k < 14; k++) setTimeout(() => {
+      const h = document.createElement('span'); h.className = 'envheart'; h.textContent = pick(['💗','💜','💕','🌸','✨']);
+      h.style.left = (r.left + r.width * rand(.25, .75)) + 'px'; h.style.top = (r.top + r.height * .3) + 'px';
+      h.style.fontSize = rand(18, 30) + 'px'; h.style.setProperty('--dx', rand(-80, 80) + 'px'); h.style.setProperty('--r', rand(-60, 60) + 'deg');
+      document.body.appendChild(h); setTimeout(() => h.remove(), 1800);
+    }, k * 90);
+  });
+
+  /* the rating gets a face */
+  const face = $('rface'), rate = $('rate');
+  const pickFace = (v) => (v >= 10 ? '🥰' : v >= 9 ? '😊' : v >= 6 ? '😾' : v >= 3 ? '😭' : '💀');
+  rate.addEventListener('input', () => { face.textContent = pickFace(+rate.value); face.classList.remove('bump'); void face.offsetWidth; face.classList.add('bump'); });
+  rate.addEventListener('change', () => setTimeout(() => { face.textContent = pickFace(+rate.value); }, 550));
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script id="v6-3d">
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const site = $('site');
+  const motionOK = !reduce;
+  let ac3; function snd(f, d = .12, v = .05, type = 'triangle', w = 0) { try { ac3 = ac3 || new (window.AudioContext || window.webkitAudioContext)(); const o = ac3.createOscillator(), g = ac3.createGain(); o.type = type; o.frequency.value = f; g.gain.value = v; o.connect(g).connect(ac3.destination); const t = ac3.currentTime + w; o.start(t); g.gain.exponentialRampToValueAtTime(.0001, t + d); o.stop(t + d + .02); } catch (e) {} }
+
+  /* ---------- 3D tilt on cards ---------- */
+  function tiltify(el, max = 10) {
+    el.classList.add('tilt3d');
+    el.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const r = el.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      el.style.setProperty('--ry', (x * max * 2).toFixed(2) + 'deg'); el.style.setProperty('--rx', (-y * max * 2).toFixed(2) + 'deg');
+      el.classList.add('tilting');
+    });
+    el.addEventListener('pointerleave', () => { el.style.setProperty('--rx', '0deg'); el.style.setProperty('--ry', '0deg'); });
+  }
+  document.querySelectorAll('#surprises .box, .counter div, .hl-plate, .note').forEach((el) => tiltify(el, 8));
+  document.querySelectorAll('#journey .stop').forEach((el) => { el.classList.add('tilt3d'); tiltify(el, 7); el.classList.remove('tilt3d'); });
+
+  /* ---------- moments: a 3D carousel you can spin ---------- */
+  (function () {
+    const host = $('polas'); const cards = [...host.children]; if (!cards.length) return;
+    const ring = document.createElement('div'); ring.className = 'ring'; cards.forEach((c) => ring.appendChild(c)); host.appendChild(ring);
+    const hint = document.createElement('p'); hint.className = 'spinhint'; hint.textContent = 'Drag to spin the memories, tap one to flip it 💫'; host.after(hint);
+    const n = cards.length; let cw, R, angle = 0, vel = 0, drag = null, moved = false, hover = false;
+    function size() {
+      cw = innerWidth < 600 ? 160 : 220; R = Math.round(Math.min(Math.max((cw + 34) / (2 * Math.tan(Math.PI / n)) * 1.7, 260), innerWidth * .42));
+      host.style.setProperty('--ph', Math.round(cw * 1.25 + 90) + 'px');
+      cards.forEach((c, i) => { c.style.width = cw + 'px'; c.style.height = Math.round(cw * 1.25) + 'px'; c.style.left = -cw / 2 + 'px'; c.style.setProperty('--t', `rotateY(${i * 360 / n}deg) translateZ(${R}px)`); });
+    }
+    size(); addEventListener('resize', size);
+    host.addEventListener('pointerenter', () => hover = true); host.addEventListener('pointerleave', () => hover = false);
+    host.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, a: angle, last: e.clientX }; moved = false; vel = 0; });
+    addEventListener('pointermove', (e) => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 6) { moved = true; host.classList.add('dragging'); } angle = drag.a + dx * .35; vel = (e.clientX - drag.last) * .35; drag.last = e.clientX; });
+    addEventListener('pointerup', () => { drag = null; host.classList.remove('dragging'); });
+    host.addEventListener('click', (e) => { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+    (function loop() {
+      if (!drag) { angle += vel; vel *= .94; if (!hover && motionOK && Math.abs(vel) < .05) angle -= .12; }
+      ring.style.transform = `translateZ(${-R}px) rotateX(-7deg) rotateY(${angle}deg)`;
+      cards.forEach((c, i) => { const rel = ((i * 360 / n + angle) % 360 + 360) % 360, cs = Math.cos(rel * Math.PI / 180); c.style.opacity = (.3 + .7 * (cs + 1) / 2).toFixed(3); c.style.pointerEvents = cs > .5 ? 'auto' : 'none'; c.style.zIndex = Math.round(cs * 100) + 100; });
+      requestAnimationFrame(loop);
+    })();
+  })();
+
+  if (!window.THREE) return; /* no 3D library: the page keeps its flat cake and backgrounds */
+  const T = THREE;
+  const heartShape = () => { const s = new T.Shape(), x = -5, y = -9.5; s.moveTo(x + 5, y + 5); s.bezierCurveTo(x + 5, y + 5, x + 4, y, x, y); s.bezierCurveTo(x - 6, y, x - 6, y + 7, x - 6, y + 7); s.bezierCurveTo(x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19); s.bezierCurveTo(x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7); s.bezierCurveTo(x + 16, y + 7, x + 16, y, x + 10, y); s.bezierCurveTo(x + 7, y, x + 5, y + 5, x + 5, y + 5); return s; };
+  const starShape = () => { const s = new T.Shape(); for (let i = 0; i < 10; i++) { const r = i % 2 ? 4.2 : 10, a = i / 10 * Math.PI * 2 + Math.PI / 2; const px = Math.cos(a) * r, py = Math.sin(a) * r; i ? s.lineTo(px, py) : s.moveTo(px, py); } s.closePath(); return s; };
+  const heartGeo = new T.ExtrudeGeometry(heartShape(), { depth: 4, bevelEnabled: true, bevelThickness: 1.6, bevelSize: 1.4, bevelSegments: 6, curveSegments: 20 }); heartGeo.center(); heartGeo.rotateZ(Math.PI); heartGeo.scale(.075, .075, .075);
+  const starGeo = new T.ExtrudeGeometry(starShape(), { depth: 2.5, bevelEnabled: true, bevelThickness: 1.2, bevelSize: 1, bevelSegments: 4 }); starGeo.center(); starGeo.scale(.07, .07, .07);
+  const candy = (c) => new T.MeshPhysicalMaterial({ color: c, roughness: .28, metalness: .02, clearcoat: 1, clearcoatRoughness: .2 });
+  function lights(scene) { scene.add(new T.HemisphereLight(0xffffff, 0xf3cfff, .95)); const d = new T.DirectionalLight(0xffffff, .85); d.position.set(5, 10, 12); scene.add(d); const p = new T.PointLight(0xff9ecb, .6, 60); p.position.set(-10, -4, 10); scene.add(p); }
+
+  /* ---------- floating 3D world behind the page ---------- */
+  function startBackground() {
+    let renderer; try { renderer = new T.WebGLRenderer({ canvas: $('bg3d'), alpha: true, antialias: true }); } catch (e) { return; }
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+    const scene = new T.Scene(), cam = new T.PerspectiveCamera(50, 1, .1, 200); cam.position.z = 30; lights(scene);
+    const COLS = [0xf48fb1, 0x9c4fd6, 0xc9a7ec, 0xff7eb3, 0xb38ce0, 0x7fd1ae, 0xffcf6b, 0x7fb8ff];
+    function balloon(c) { const g = new T.Group(); const b = new T.Mesh(new T.SphereGeometry(1, 32, 24), candy(c)); b.scale.set(1, 1.18, 1); g.add(b); const k = new T.Mesh(new T.ConeGeometry(.16, .25, 12), candy(c)); k.position.y = -1.25; k.rotation.x = Math.PI; g.add(k);
+      const pts = []; for (let i = 0; i <= 20; i++) pts.push(new T.Vector3(Math.sin(i * .6) * .15, -1.35 - i * .14, 0)); g.add(new T.Line(new T.BufferGeometry().setFromPoints(pts), new T.LineBasicMaterial({ color: 0x9c7ab8 }))); return g; }
+    function gift() { const g = new T.Group(); g.add(new T.Mesh(new T.BoxGeometry(1.5, 1.3, 1.5), candy(0x9c4fd6))); const rib = candy(0xffcf6b); const a = new T.Mesh(new T.BoxGeometry(1.54, 1.34, .28), rib), b = new T.Mesh(new T.BoxGeometry(.28, 1.34, 1.54), rib); g.add(a, b);
+      [-1, 1].forEach((s) => { const t = new T.Mesh(new T.TorusGeometry(.3, .09, 10, 24), rib); t.position.set(s * .28, .82, 0); t.rotation.y = Math.PI / 2; t.rotation.z = s * .5; g.add(t); }); return g; }
+    const objs = [];
+    function make(i) { const kind = i % 7; let m;
+      if (kind < 3) m = new T.Mesh(heartGeo, candy(COLS[i % 3 === 0 ? 0 : i % 3 === 1 ? 1 : 3]));
+      else if (kind < 5) m = balloon(COLS[i % COLS.length]);
+      else if (kind === 5) m = new T.Mesh(starGeo, candy(0xffcf6b));
+      else m = gift();
+      m.userData = { phase: Math.random() * 6.28, spin: (Math.random() * .6 + .2) * (Math.random() < .5 ? -1 : 1), kind, s: .8 + Math.random() * .7 };
+      m.scale.setScalar(m.userData.s); scene.add(m); objs.push(m); return m; }
+    let k = 1, halfW = 10, pageH = 1;
+    function place(m, yTop, yBot) { const z = -Math.random() * 14 + 2, side = Math.random() < .5 ? -1 : 1, spread = halfW * (1 - z / 30);
+      m.position.set(side * (spread * (.5 + Math.random() * .5)), yTop - Math.random() * (yTop - yBot), z); m.userData.baseY = m.position.y; m.userData.baseX = m.position.x; m.visible = true; m.userData.pop = 0; }
+    function layout() { const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
+      const visH = 2 * 30 * Math.tan(T.MathUtils.degToRad(25)); k = visH / h; halfW = visH * cam.aspect / 2; pageH = document.documentElement.scrollHeight;
+      const need = Math.max(18, Math.min(60, Math.round(pageH / h * 5))); while (objs.length < need) make(objs.length);
+      objs.forEach((m) => place(m, 4, -pageH * k + 4)); }
+    layout(); let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(layout, 200); });
+    let mx = 0, my = 0; addEventListener('pointermove', (e) => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; });
+    /* tap a floating heart, balloon or star to pop it */
+    const ray = new T.Raycaster(), v2 = new T.Vector2();
+    addEventListener('pointerdown', (e) => {
+      if (e.target.closest('button,a,input,canvas,label,.pola,.box,.hl-plate,.note,.paper,.stop,.counter,nav,svg')) return;
+      v2.set(e.clientX / innerWidth * 2 - 1, -(e.clientY / innerHeight) * 2 + 1); ray.setFromCamera(v2, cam);
+      const hit = ray.intersectObjects(objs.filter((o) => o.visible), true)[0]; if (!hit) return;
+      let o = hit.object; while (o.parent && o.parent !== scene) o = o.parent; if (o.userData.pop) return;
+      o.userData.pop = performance.now(); snd(500 + Math.random() * 400, .15, .06); snd(1200, .08, .03, 'sine', .05);
+      setTimeout(() => place(o, cam.position.y + 30, cam.position.y - 30), 3500);
+    });
+    let t0 = performance.now();
+    (function frame(now) {
+      const t = (now - t0) / 1000;
+      cam.position.y += (-scrollY * k - cam.position.y) * .2;
+      cam.position.x += (mx * 3 - cam.position.x) * .04; cam.rotation.x = -my * .05;
+      objs.forEach((m) => { const u = m.userData;
+        if (u.pop) { const p = (now - u.pop) / 400; if (p >= 1) { m.visible = false; } else { m.scale.setScalar(u.s * (1 + p * .8) * (1 - p * p)); } }
+        else m.scale.setScalar(u.s);
+        if (!m.visible) return;
+        if (motionOK) { m.position.y = u.baseY + Math.sin(t * .8 + u.phase) * .6; m.position.x = u.baseX + Math.sin(t * .5 + u.phase) * .3;
+          if (u.kind >= 3 && u.kind < 5) { m.rotation.z = Math.sin(t * .9 + u.phase) * .12; m.rotation.y = t * .2 * u.spin; } else { m.rotation.y = t * u.spin; m.rotation.x = Math.sin(t * .6 + u.phase) * .3; } }
+      });
+      renderer.render(scene, cam); requestAnimationFrame(frame);
+    })(t0);
+    setTimeout(layout, 1500); /* page height settles once fonts load */
+  }
+
+  /* ---------- the 3D birthday cake ---------- */
+  function startCake() {
+    const box = document.createElement('div'); box.id = 'cake3d'; box.setAttribute('role', 'img'); box.setAttribute('aria-label', 'A 3D birthday cake with candles. Tap each candle to blow it out.');
+    const old = $('cake'); old.before(box);
+    let renderer; try { renderer = new T.WebGLRenderer({ alpha: true, antialias: true }); } catch (e) { box.remove(); return; }
+    box.appendChild(renderer.domElement); renderer.setPixelRatio(Math.min(devicePixelRatio, 2)); box.classList.add('ready');
+    const scene = new T.Scene(), cam = new T.PerspectiveCamera(34, 1, .1, 100); cam.position.set(0, 4.6, 10.5); cam.lookAt(0, 1.55, 0); scene.add(new T.HemisphereLight(0xffffff, 0xe9d6ff, .55)); { const d = new T.DirectionalLight(0xffffff, .75); d.position.set(4, 8, 6); scene.add(d); const f = new T.DirectionalLight(0xffd6ec, .3); f.position.set(-6, 2, 4); scene.add(f); }
+    const cake = new T.Group(); scene.add(cake);
+    const mat = (c, r = .5) => new T.MeshStandardMaterial({ color: c, roughness: r });
+    const cyl = (r, h, c, y, seg = 64) => { const m = new T.Mesh(new T.CylinderGeometry(r, r, h, seg), typeof c === 'number' ? mat(c) : c); m.position.y = y; cake.add(m); return m; };
+    /* soft shadow */
+    const sc = document.createElement('canvas'); sc.width = sc.height = 128; const sx = sc.getContext('2d'); const gr = sx.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, 'rgba(80,30,110,.35)'); gr.addColorStop(1, 'rgba(80,30,110,0)'); sx.fillStyle = gr; sx.fillRect(0, 0, 128, 128);
+    const sh = new T.Mesh(new T.PlaneGeometry(8, 8), new T.MeshBasicMaterial({ map: new T.CanvasTexture(sc), transparent: true, depthWrite: false })); sh.rotation.x = -Math.PI / 2; sh.position.y = -.01; scene.add(sh);
+    cyl(3.05, .16, 0xeadcf7, .08); cyl(3.15, .06, 0xffffff, .02);
+    const white = mat(0xfffafc, .35);
+    function tier(r, h, y, c, drips) { cyl(r, h, c, y + h / 2); cyl(r + .05, .16, white, y + h); const dg = new T.SphereGeometry(.12, 12, 10);
+      for (let i = 0; i < drips; i++) { const a = i / drips * Math.PI * 2, d = new T.Mesh(dg, white); const len = .7 + (i * 37 % 10) / 10 * 1.1; d.scale.set(1, len, 1); d.position.set(Math.cos(a) * (r + .02), y + h - .12 * len, Math.sin(a) * (r + .02)); cake.add(d); } }
+    tier(2.3, 1.35, .16, 0x9c6ad6, 22); tier(1.55, 1.05, 1.67, 0xf48fb1, 15);
+    const topY = 2.72 + .1;
+    /* sprinkles */
+    const spCols = [0xff7eb3, 0x7fd1ae, 0xffcf6b, 0x7fb8ff, 0x9c4fd6], spG = new T.CylinderGeometry(.03, .03, .16, 6);
+    for (let i = 0; i < 70; i++) { const s = new T.Mesh(spG, mat(spCols[i % 5], .4)); const onTop = i < 30, r = onTop ? Math.sqrt(Math.random()) * 1.35 : 1.75 + Math.random() * .45, a = Math.random() * Math.PI * 2;
+      s.position.set(Math.cos(a) * r, onTop ? topY - .02 : 1.68, Math.sin(a) * r); s.rotation.set(Math.PI / 2, 0, Math.random() * Math.PI); cake.add(s); }
+    const topHeart = new T.Mesh(heartGeo, candy(0xe0559a)); topHeart.scale.setScalar(.55); topHeart.position.set(0, topY + .45, 0); cake.add(topHeart);
+    /* candles */
+    const stc = document.createElement('canvas'); stc.width = 64; stc.height = 256; const st = stc.getContext('2d'); st.fillStyle = '#fff'; st.fillRect(0, 0, 64, 256); st.fillStyle = '#9c4fd6'; for (let y = -64; y < 256; y += 40) { st.beginPath(); st.moveTo(0, y); st.lineTo(64, y + 26); st.lineTo(64, y + 44); st.lineTo(0, y + 18); st.fill(); }
+    const stripe = new T.MeshStandardMaterial({ map: new T.CanvasTexture(stc), roughness: .5 });
+    const gc = document.createElement('canvas'); gc.width = gc.height = 64; const gx = gc.getContext('2d'); const g2 = gx.createRadialGradient(32, 32, 0, 32, 32, 32); g2.addColorStop(0, 'rgba(255,220,130,.9)'); g2.addColorStop(1, 'rgba(255,200,100,0)'); gx.fillStyle = g2; gx.fillRect(0, 0, 64, 64); const glowTex = new T.CanvasTexture(gc);
+    const candles = [], N = 5;
+    for (let i = 0; i < N; i++) { const a = i / N * Math.PI * 2 + .3, r = 1.0; const g = new T.Group(); g.position.set(Math.cos(a) * r, topY, Math.sin(a) * r);
+      const stick = new T.Mesh(new T.CylinderGeometry(.09, .09, .8, 16), stripe); stick.position.y = .4; g.add(stick);
+      const wick = new T.Mesh(new T.CylinderGeometry(.015, .015, .1, 6), mat(0x333333)); wick.position.y = .85; g.add(wick);
+      const flame = new T.Mesh(new T.SphereGeometry(.11, 16, 16), new T.MeshBasicMaterial({ color: 0xffb53f })); flame.position.y = 1.02; flame.scale.set(1, 1.8, 1); g.add(flame);
+      const core = new T.Mesh(new T.SphereGeometry(.06, 12, 12), new T.MeshBasicMaterial({ color: 0xfff6d0 })); core.position.y = .99; core.scale.set(1, 1.6, 1); g.add(core);
+      const glow = new T.Sprite(new T.SpriteMaterial({ map: glowTex, blending: T.AdditiveBlending, depthWrite: false, transparent: true })); glow.scale.set(1, 1, 1); glow.position.y = 1.02; g.add(glow);
+      const light = new T.PointLight(0xffb34d, .5, 3.5); light.position.y = 1.1; g.add(light);
+      cake.add(g); candles.push({ g, stick, flame, core, glow, light, out: false, i, puffs: [] }); }
+    function size() { const w = box.clientWidth, h = box.clientHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); }
+    size(); addEventListener('resize', size);
+    /* drag to spin, tap a candle to blow it out */
+    let rotY = 0, vel = .004, drag = null, moved = false;
+    box.addEventListener('pointerdown', (e) => { drag = { x: e.clientX, r: rotY }; moved = false; });
+    addEventListener('pointermove', (e) => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 5) moved = true; rotY = drag.r + dx * .012; });
+    addEventListener('pointerup', () => { drag = null; });
+    const ray = new T.Raycaster(), v2 = new T.Vector2(); let outCount = 0, relightable = false;
+    box.addEventListener('click', (e) => { if (moved) return; const r = box.getBoundingClientRect(); v2.set((e.clientX - r.left) / r.width * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1); ray.setFromCamera(v2, cam);
+      if (relightable) { candles.forEach((c) => { c.out = false; c.flame.visible = c.core.visible = c.glow.visible = true; c.light.intensity = .5; }); outCount = 0; relightable = false; $('cakehint').textContent = 'Candles relit. Make another wish 🕯️'; snd(880, .1); return; }
+      const targets = candles.filter((c) => !c.out).flatMap((c) => [c.stick, c.flame, c.glow]);
+      let hit = ray.intersectObjects(targets, false)[0];
+      /* forgiving taps: no direct hit means the nearest lit candle on screen */
+      let c = hit && candles.find((c) => c.stick === hit.object || c.flame === hit.object || c.glow === hit.object);
+      if (!c) { let best = 1e9; candles.forEach((cc) => { if (cc.out) return; const p = new T.Vector3(); cc.flame.getWorldPosition(p); p.project(cam); const d = Math.hypot(p.x - v2.x, p.y - v2.y); if (d < best && d < .25) { best = d; c = cc; } }); }
+      if (!c) return;
+      c.out = true; c.flame.visible = c.core.visible = c.glow.visible = false; c.light.intensity = 0; snd(220, .2, .05, 'sawtooth');
+      for (let p = 0; p < 5; p++) { const s = new T.Mesh(new T.SphereGeometry(.08 + p * .02, 10, 10), new T.MeshBasicMaterial({ color: 0xbbaacc, transparent: true, opacity: .6 })); s.position.set(0, 1 + p * .05, 0); c.g.add(s); c.puffs.push({ s, t: performance.now() + p * 90 }); }
+      outCount++;
+      if (outCount === N) { $('cakehint').textContent = 'Your wish has been sent to the universe ✨ Happy birthday!'; confetti(90);
+        const NT = [392, 392, 440, 392, 523, 494, 392, 392, 440, 392, 587, 523], D = [.3, .1, .4, .4, .4, .8, .3, .1, .4, .4, .4, .8]; let tt = .3; NT.forEach((f, j) => { snd(f, D[j] * .9, .06, 'triangle', tt); tt += D[j]; });
+        setTimeout(() => { relightable = true; }, 4000); }
+      else $('cakehint').textContent = `${N - outCount} more to go… blow harder 🌬️`;
+    });
+    $('cakehint').textContent = 'Make a wish, then tap each candle to blow it out 🕯️ (drag to spin the cake)';
+    let t0 = performance.now();
+    (function frame(now) {
+      const t = (now - t0) / 1000;
+      if (!drag) { rotY += motionOK ? vel : 0; }
+      cake.rotation.y = rotY; cake.position.y = motionOK ? Math.sin(t * 1.2) * .06 : 0; topHeart.rotation.y = t * 1.2;
+      candles.forEach((c) => { if (!c.out && motionOK) { const f = 1 + Math.sin(t * 18 + c.i * 2) * .08 + Math.sin(t * 31 + c.i) * .05; c.flame.scale.set(1 / f, 1.8 * f, 1 / f); c.light.intensity = .45 + Math.sin(t * 23 + c.i) * .08; c.glow.scale.setScalar(.9 + Math.sin(t * 12 + c.i) * .08); }
+        c.puffs = c.puffs.filter((p) => { const k = (now - p.t) / 1300; if (k < 0) return true; if (k >= 1) { c.g.remove(p.s); return false; } p.s.position.y = 1 + k * 1.4; p.s.position.x = Math.sin(k * 6 + c.i) * .12; p.s.scale.setScalar(1 + k * 2); p.s.material.opacity = .6 * (1 - k); return true; }); });
+      renderer.render(scene, cam); requestAnimationFrame(frame);
+    })(t0);
+  }
+
+  /* start once she's past the password, so nothing renders behind the login */
+  let started = false;
+  const go = () => { if (started || site.classList.contains('hidden')) return; started = true; requestAnimationFrame(() => { startCake(); startBackground(); }); };
+  new MutationObserver(go).observe(site, { attributes: true, attributeFilter: ['class'] }); go();
+})();
+</script>
+<script id="hl-kernel">
+/* hairline kernel sha256:3a19aa2640ba8c6c306184d05fddfbd4f3323a6ebd9217dd3cbb38e9db74991c */
+/*
+ * HL: everything a figure may call. Read this index; the code under it is the
+ * package's src/core, unchanged, and a figure should not need to read it.
+ *
+ * Every figure is drawn in a 400 × 320 viewBox. World space is x/y on the
+ * ground and z up. Plates are filled with the ground colour and painted back
+ * to front, so a nearer one covers a farther one: append in that order. At
+ * the default camera, Cam(45, 0.5, S), +x runs down to the right and +y down
+ * to the left, so the corner with the largest x and y is nearest the viewer:
+ * append by ascending x + y, from the far corner (smallest x and y) to it.
+ *
+ * Camera
+ *   Cam(azDeg, k, S)                       a camera: azimuth in degrees, k = sin(elevation) (0.5 is the 2:1 view), S = scale
+ *   fit(C, points, cx, cy)                 centres the box of [x, y, z] points on (cx, cy); call it once, before proj
+ *                                          it only centres, it never scales: choose S by trying values, with the most extreme pose in points.
+ *                                          The six figures use S 1.42 to 2.12; the boxes they fit come out 230 to 310 wide and 180 to 245 tall
+ *   proj(C)                                returns P(x, y, z), which gives [sx, sy]
+ *   unproj(C, sx, sy, z)                   the world [x, y] under a screen point, on the plane at height z
+ *   facing(C)                              returns front(sample): whether a ring sample faces the camera
+ * Rounded solids
+ *   rrect(u0, v0, u1, v1, r, n)            a rounded rectangle, as a ring of samples {u, v, nu, nv}
+ *   circ(R, n)                             a circle, as a ring
+ *   rings(x0, y0, x1, y1, r, b)            [ring, inner]: a rounded footprint and its crease ring, inset by b
+ *                                          r, the corner radius, is cut to half the shorter side. b, the crease's inset in world units
+ *                                          (0.6 to 2.2 in the figures), must stay under half the shorter side or the crease turns inside out
+ *   prism(P, front, ring, inner, z0, z1)   {sil, crease}: a solid standing from z0 to z1, as two path strings
+ *   ringAt(P, ring, z)                     the ring's points, projected at height z
+ *   run(ring, keep)                        the one cyclic run of samples that pass keep
+ *   hull(points)                           the convex hull of screen points
+ *   extremes(P, ring)                      [left, right, nearest] samples: where dashed drops fall from
+ *   fillet(points, radii, n)               rounds every vertex of a closed polygon; returns the new points
+ *                                          radii is an array, one radius per vertex, each cut to half its shorter edge; a single number gives NaN.
+ *                                          n is the steps round each corner, default 4: each vertex becomes n + 1 points
+ *   ghost(P, front, ring, z0, depth)       a reflection's path {d, y0, y1}; reflect() draws it for you
+ * Paths and numbers
+ *   poly(points)                           a closed path string
+ *   open(points)                           an open polyline string
+ *   seg(a, b)                              one segment between two screen points [sx, sy], as its own subpath; project world points with P first
+ *   clamp(v, a, b)
+ *   lerp(a, b, t)
+ *   rad(deg)
+ *   r2(n)                                  two decimals
+ * The continuous clock: one spring per moving number
+ *   spring(x, opts)                        at rest on x; write .t to retarget; opts {k, c, m, eps}, default k 100, c 18, m 1
+ *   stepS(sp, dt)                          advances by dt seconds; returns whether it is still moving
+ * The discrete clock: a 700ms tween on (.32, .72, 0, 1)
+ *   tween(v, dur)                          at rest on v; dur defaults to 700 (ms)
+ *   tset(tw, to, now, delay)               retargets from where it is, after delay ms: the stagger
+ *                                          the same target again does nothing, so calling it on every pointer move is safe
+ *   tval(tw, now)                          its value at now
+ *   tdone(tw, now)                         whether it has landed
+ *   bezier(x1, y1, x2, y2)                 a CSS cubic-bezier, as a function of progress
+ *   EASE_LIFT                              the lift curve itself
+ *   reducedMotion()                        true when the reader asked for less motion; springs and tweens already land at once
+ *   setReducedMotion(on)                   the loop's business, not a figure's
+ * Drawing
+ *   mk(tag, attrs, parent)                 one svg element: the only way a figure makes a node
+ *   solid(parent)                          {g, sil, cr}: a group holding a silhouette path and a crease path
+ *   put(solid, paths)                      writes prism()'s {sil, crease} into solid()'s {sil, cr}: sil into sil, crease into cr
+ *   flatDot(parent, C, r, cls)             a dot lying on the ground plane; cls is "dot", "dot m" or "dot off"
+ *   place(el, point)                       moves a dot or a circle to [sx, sy]
+ *   reflect(svg, parent, P, front, ring, z0, depth)   a fading mirror under a solid
+ *   fade(svg, y0, y1, a0)                  a vertical fade, as a mask; returns the value for a mask attribute
+ * Life
+ *   register(stage, tick)                  joins the one frame loop; tick(dt in seconds, now in ms) returns true to ask for another frame; gives {wake, unregister}
+ *   pointer(stage, handlers)               {move(point), down(point), leave()}, points in viewBox units; returns its disposer
+ *   disposer()                             {add, on, dispose}: collects tear-down, so destroy is bag.dispose
+ * The bench's business, not a figure's
+ *   css(lightDark)
+ *   inject(root)
+ *   tour(stage, stops, onStop)             an unseen pointer that walks the stops, [x, y] in viewBox units or null to leave, and gives way to a real one; onStop(i) on each arrival; returns {stop}
+ *   LAP                                    the default stops: a diamond around the centre, then a leave
+ *
+ * Classes, on path, polygon, ellipse and line. They are the whole palette; a
+ * figure sets no colour, width or fill of its own.
+ *     (none)   filled with the ground colour, medium stroke
+ *     sil      the silhouette's stroke        hi    the bright stroke: the only highlight
+ *     lo       the dim stroke                 nf    no fill        fo   fill only, no stroke
+ *     dash     a dashed guide
+ *     dot      a bright dot                   dot m   a medium dot     dot off   a dim dot
+ */
+var HL = (() => {
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+  // packages/hairline/src/core/kernel.ts
+  var kernel_exports = {};
+  __export(kernel_exports, {
+    Cam: () => Cam,
+    EASE_LIFT: () => EASE_LIFT,
+    LAP: () => LAP,
+    bezier: () => bezier,
+    circ: () => circ,
+    clamp: () => clamp,
+    css: () => css,
+    disposer: () => disposer,
+    extremes: () => extremes,
+    facing: () => facing,
+    fade: () => fade,
+    fillet: () => fillet,
+    fit: () => fit,
+    flatDot: () => flatDot,
+    ghost: () => ghost,
+    hull: () => hull,
+    inject: () => inject,
+    lerp: () => lerp,
+    mk: () => mk,
+    open: () => open,
+    place: () => place,
+    pointer: () => pointer,
+    poly: () => poly,
+    prism: () => prism,
+    proj: () => proj,
+    put: () => put,
+    r2: () => r2,
+    rad: () => rad,
+    reducedMotion: () => reducedMotion,
+    reflect: () => reflect,
+    register: () => register,
+    ringAt: () => ringAt,
+    rings: () => rings,
+    rrect: () => rrect,
+    run: () => run,
+    seg: () => seg,
+    setReducedMotion: () => setReducedMotion,
+    solid: () => solid,
+    spring: () => spring,
+    stepS: () => stepS,
+    tdone: () => tdone,
+    tour: () => tour,
+    tset: () => tset,
+    tval: () => tval,
+    tween: () => tween,
+    unproj: () => unproj
+  });
+
+  // packages/hairline/src/core/iso.ts
+  var clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  var lerp = (a, b, t) => a + (b - a) * t;
+  var rad = (d) => d * Math.PI / 180;
+  var r2 = (n) => Math.round(n * 100) / 100;
+  var poly = (pts) => "M" + pts.map((p) => r2(p[0]) + " " + r2(p[1])).join("L") + "Z";
+  var seg = (a, b) => `M${r2(a[0])} ${r2(a[1])}L${r2(b[0])} ${r2(b[1])}`;
+  var open = (pts) => pts.length < 2 ? "" : "M" + pts.map((p) => r2(p[0]) + " " + r2(p[1])).join("L");
+  var Cam = (azDeg, k, S) => ({ az: rad(azDeg), k, S, ox: 0, oy: 0 });
+  function proj(C) {
+    const c = Math.cos(C.az), s = Math.sin(C.az), zf = Math.sqrt(1 - C.k * C.k);
+    return (x, y, z) => {
+      const X = x * c - y * s, Y = x * s + y * c;
+      return [C.ox + C.S * X, C.oy + C.S * (Y * C.k - z * zf)];
+    };
+  }
+  function unproj(C, sx, sy, z) {
+    const c = Math.cos(C.az), s = Math.sin(C.az), zf = Math.sqrt(1 - C.k * C.k);
+    const X = (sx - C.ox) / C.S, Y = ((sy - C.oy) / C.S + z * zf) / C.k;
+    return [X * c + Y * s, -X * s + Y * c];
+  }
+  function fit(C, pts, cx, cy) {
+    C.ox = 0;
+    C.oy = 0;
+    const P = proj(C);
+    let a = 1e9, b = -1e9, c = 1e9, d = -1e9;
+    for (const p of pts) {
+      const q = P(p[0], p[1], p[2]);
+      a = Math.min(a, q[0]);
+      b = Math.max(b, q[0]);
+      c = Math.min(c, q[1]);
+      d = Math.max(d, q[1]);
+    }
+    C.ox = cx - (a + b) / 2;
+    C.oy = cy - (c + d) / 2;
+  }
+  function rrect(u0, v0, u1, v1, r, n = 4) {
+    r = Math.max(0, Math.min(r, (u1 - u0) / 2, (v1 - v0) / 2));
+    const out = [];
+    for (const [cu, cv, a0] of [[u1 - r, v1 - r, 0], [u0 + r, v1 - r, 90], [u0 + r, v0 + r, 180], [u1 - r, v0 + r, 270]])
+      for (let k = 0; k <= n; k++) {
+        const a = rad(a0 + 90 * k / n), ca = Math.cos(a), sa = Math.sin(a);
+        out.push({ u: cu + r * ca, v: cv + r * sa, nu: ca, nv: sa });
+      }
+    return out;
+  }
+  function circ(R, n = 96) {
+    const out = [];
+    for (let k = 0; k < n; k++) {
+      const a = k / n * Math.PI * 2, ca = Math.cos(a), sa = Math.sin(a);
+      out.push({ u: R * ca, v: R * sa, nu: ca, nv: sa });
+    }
+    return out;
+  }
+  function hull(input) {
+    const pts = input.slice().sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+    const x = (o, a, b) => (a[0] - o[0]) * (b[1] - o[1]) - (a[1] - o[1]) * (b[0] - o[0]);
+    const lo = [], up = [];
+    for (const p of pts) {
+      while (lo.length > 1 && x(lo[lo.length - 2], lo[lo.length - 1], p) <= 0) lo.pop();
+      lo.push(p);
+    }
+    for (let i = pts.length - 1; i >= 0; i--) {
+      const p = pts[i];
+      while (up.length > 1 && x(up[up.length - 2], up[up.length - 1], p) <= 0) up.pop();
+      up.push(p);
+    }
+    lo.pop();
+    up.pop();
+    return lo.concat(up);
+  }
+  var ringAt = (P, ring, z) => ring.map((q) => P(q.u, q.v, z));
+  var facing = (C) => {
+    const s = Math.sin(C.az), c = Math.cos(C.az);
+    return (q) => q.nu * s + q.nv * c >= -1e-6;
+  };
+  function run(ring, keep) {
+    const n = ring.length;
+    let s = -1;
+    for (let i = 0; i < n; i++) if (keep(ring[i]) && !keep(ring[(i + n - 1) % n])) {
+      s = i;
+      break;
+    }
+    if (s < 0) return keep(ring[0]) ? ring.slice() : [];
+    const out = [];
+    for (let k = 0; k < n && keep(ring[(s + k) % n]); k++) out.push(ring[(s + k) % n]);
+    return out;
+  }
+  function prism(P, front, ring, inner, z0, z1) {
+    return {
+      sil: poly(hull(ringAt(P, ring, z1).concat(ringAt(P, ring, z0)))),
+      crease: inner ? open(ringAt(P, run(inner, front), z1)) : ""
+    };
+  }
+  var rings = (x0, y0, x1, y1, r, b) => [
+    rrect(x0, y0, x1, y1, r),
+    rrect(x0 + b, y0 + b, x1 - b, y1 - b, Math.max(0.3, r - b))
+  ];
+  function extremes(P, ring) {
+    const pr = ring.map((q) => P(q.u, q.v, 0));
+    let a = 0, b = 0, c = 0;
+    pr.forEach((p, k) => {
+      if (p[0] < pr[a][0]) a = k;
+      if (p[0] > pr[b][0]) b = k;
+      if (p[1] > pr[c][1]) c = k;
+    });
+    return [ring[a], ring[b], ring[c]];
+  }
+  function fillet(pts, rs, n = 4) {
+    const m = pts.length, out = [];
+    for (let i = 0; i < m; i++) {
+      const a = pts[(i + m - 1) % m], p = pts[i], b = pts[(i + 1) % m];
+      const la = Math.hypot(a[0] - p[0], a[1] - p[1]), lb = Math.hypot(b[0] - p[0], b[1] - p[1]);
+      const t = Math.min(rs[i], la / 2, lb / 2);
+      const p1 = [p[0] + (a[0] - p[0]) / la * t, p[1] + (a[1] - p[1]) / la * t];
+      const p2 = [p[0] + (b[0] - p[0]) / lb * t, p[1] + (b[1] - p[1]) / lb * t];
+      for (let k = 0; k <= n; k++) {
+        const s = k / n, w = 1 - s;
+        out.push([w * w * p1[0] + 2 * w * s * p[0] + s * s * p2[0], w * w * p1[1] + 2 * w * s * p[1] + s * s * p2[1]]);
+      }
+    }
+    return out;
+  }
+  function ghost(P, front, ring, z0, depth) {
+    const f = run(ring, front), lowP = ringAt(P, f, z0 - depth);
+    return {
+      d: open(lowP) + [f[0], f[f.length - 1]].map((q) => seg(P(q.u, q.v, z0), P(q.u, q.v, z0 - depth))).join(""),
+      y0: Math.min(...ringAt(P, f, z0).map((p) => p[1])),
+      y1: Math.max(...lowP.map((p) => p[1])) + 2
+    };
+  }
+
+  // packages/hairline/src/core/motion.ts
+  var reduced = false;
+  var setReducedMotion = (on) => {
+    reduced = on;
+  };
+  var reducedMotion = () => reduced;
+  function spring(x, o = {}) {
+    return { x, v: 0, t: x, k: o.k ?? 100, c: o.c ?? 18, m: o.m ?? 1, eps: o.eps ?? 0.01 };
+  }
+  function stepS(sp, dt) {
+    if (reduced) {
+      sp.x = sp.t;
+      sp.v = 0;
+      return false;
+    }
+    const n = Math.max(1, Math.ceil(dt * 240)), h = dt / n;
+    for (let i = 0; i < n; i++) {
+      const a = (-sp.k * (sp.x - sp.t) - sp.c * sp.v) / sp.m;
+      sp.v += a * h;
+      sp.x += sp.v * h;
+    }
+    if (Math.abs(sp.x - sp.t) < sp.eps && Math.abs(sp.v) < sp.eps * 10) {
+      sp.x = sp.t;
+      sp.v = 0;
+      return false;
+    }
+    return true;
+  }
+  function bezier(x1, y1, x2, y2) {
+    const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+    const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+    const X = (u) => ((ax * u + bx) * u + cx) * u;
+    const Y = (u) => ((ay * u + by) * u + cy) * u;
+    const dX = (u) => (3 * ax * u + 2 * bx) * u + cx;
+    return (t) => {
+      if (t <= 0) return 0;
+      if (t >= 1) return 1;
+      let u = t;
+      for (let i = 0; i < 8; i++) {
+        const e = X(u) - t;
+        if (Math.abs(e) < 1e-5) break;
+        const d = dX(u);
+        if (Math.abs(d) < 1e-6) break;
+        u -= e / d;
+      }
+      if (!(u >= 0 && u <= 1) || Math.abs(X(u) - t) > 1e-4) {
+        let lo = 0, hi = 1;
+        u = t;
+        for (let i = 0; i < 24; i++) {
+          if (X(u) < t) lo = u;
+          else hi = u;
+          u = (lo + hi) / 2;
+        }
+      }
+      return Y(u);
+    };
+  }
+  var EASE_LIFT = bezier(0.32, 0.72, 0, 1);
+  var tween = (v, dur = 700) => ({ from: v, to: v, t0: -1e9, dur });
+  var tval = (tw, now) => {
+    const p = clamp((now - tw.t0) / tw.dur, 0, 1);
+    return tw.from + (tw.to - tw.from) * (reduced ? 1 : EASE_LIFT(p));
+  };
+  var tset = (tw, to, now, delay) => {
+    if (tw.to === to) return;
+    tw.from = tval(tw, now);
+    tw.to = to;
+    tw.t0 = now + delay;
+  };
+  var tdone = (tw, now) => reduced || now >= tw.t0 + tw.dur;
+
+  // packages/hairline/src/core/stage.ts
+  var NS = "http://www.w3.org/2000/svg";
+  function mk(tag, attrs, parent) {
+    const e = document.createElementNS(NS, tag);
+    if (attrs) for (const k in attrs) e.setAttribute(k, String(attrs[k]));
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function solid(parent) {
+    const g = mk("g", {}, parent);
+    return { g, sil: mk("path", { class: "sil" }, g), cr: mk("path", { class: "nf lo" }, g) };
+  }
+  var put = (el, s) => {
+    el.sil.setAttribute("d", s.sil);
+    el.cr.setAttribute("d", s.crease);
+  };
+  var flatDot = (parent, C, r, cls) => mk("ellipse", { rx: r2(r * C.S), ry: r2(r * C.S * C.k), class: cls }, parent);
+  var place = (el, q) => {
+    el.setAttribute("cx", String(r2(q[0])));
+    el.setAttribute("cy", String(r2(q[1])));
+  };
+  var fid = 0;
+  function fade(svg, y0, y1, a0 = 0.7) {
+    const id = "hl-fd" + ++fid, defs = mk("defs", {}, svg);
+    const lg = mk("linearGradient", { id: id + "g", gradientUnits: "userSpaceOnUse", x1: 0, y1: r2(y0), x2: 0, y2: r2(y1) }, defs);
+    mk("stop", { offset: 0, "stop-color": "#fff", "stop-opacity": a0 }, lg);
+    mk("stop", { offset: 1, "stop-color": "#fff", "stop-opacity": 0 }, lg);
+    const m = mk("mask", { id, maskUnits: "userSpaceOnUse", x: 0, y: 0, width: 400, height: 320 }, defs);
+    mk("rect", { x: 0, y: 0, width: 400, height: 320, fill: `url(#${id}g)` }, m);
+    return `url(#${id})`;
+  }
+  function reflect(svg, parent, P, front, ring, z0, depth) {
+    const r = ghost(P, front, ring, z0, depth);
+    const gh = mk("g", { class: "ghost", mask: fade(svg, r.y0, r.y1) }, parent);
+    mk("path", { d: r.d }, gh);
+  }
+  var boards = [];
+  var byStage = /* @__PURE__ */ new Map();
+  var raf = 0;
+  var last = 0;
+  var io = null;
+  var rm = null;
+  function frame(now) {
+    const dt = Math.min(0.05, Math.max(0, (now - last) / 1e3));
+    last = now;
+    let any = false;
+    for (const b of boards.slice()) if (b.vis && b.awake) {
+      try {
+        b.awake = !!b.tick(dt, now);
+      } catch (err) {
+        b.awake = false;
+        setTimeout(() => {
+          throw err;
+        });
+      }
+      any = any || b.awake;
+    }
+    raf = any ? requestAnimationFrame(frame) : 0;
+  }
+  function wake(b) {
+    b.awake = true;
+    if (!raf) {
+      last = performance.now();
+      raf = requestAnimationFrame(frame);
+    }
+  }
+  var onMotion = () => {
+    setReducedMotion(!!rm?.matches);
+    boards.forEach(wake);
+  };
+  function start() {
+    if (io) return;
+    io = new IntersectionObserver((es) => {
+      for (const e of es) {
+        const set = byStage.get(e.target);
+        if (!set) continue;
+        for (const b of set) {
+          b.vis = e.isIntersecting;
+          if (b.vis) wake(b);
+        }
+      }
+    }, { rootMargin: "80px" });
+    rm = matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(rm.matches);
+    rm.addEventListener("change", onMotion);
+  }
+  function stop() {
+    if (raf) cancelAnimationFrame(raf);
+    raf = 0;
+    io?.disconnect();
+    io = null;
+    rm?.removeEventListener("change", onMotion);
+    rm = null;
+  }
+  function register(stage, tick) {
+    start();
+    const b = { stage, tick, vis: false, awake: true };
+    boards.push(b);
+    const peers = byStage.get(stage);
+    if (peers) {
+      for (const p of peers) b.vis = p.vis;
+      peers.add(b);
+      if (b.vis) wake(b);
+    } else {
+      byStage.set(stage, /* @__PURE__ */ new Set([b]));
+      io.observe(stage);
+    }
+    tick(0, performance.now());
+    let gone = false;
+    return {
+      wake: () => {
+        if (!gone) wake(b);
+      },
+      unregister: () => {
+        if (gone) return;
+        gone = true;
+        boards = boards.filter((x) => x !== b);
+        const set = byStage.get(stage);
+        if (set) {
+          set.delete(b);
+          if (!set.size) {
+            byStage.delete(stage);
+            io?.unobserve(stage);
+          }
+        }
+        if (!boards.length) stop();
+      }
+    };
+  }
+  var handlers = /* @__PURE__ */ new WeakMap();
+  var touring = /* @__PURE__ */ new WeakMap();
+  function pointer(stage, on) {
+    handlers.set(stage, on);
+    let tm = 0;
+    const pt = (e) => {
+      const r = stage.getBoundingClientRect();
+      return [(e.clientX - r.left) / r.width * 400, (e.clientY - r.top) / r.height * 320];
+    };
+    const move = (e) => {
+      clearTimeout(tm);
+      touring.get(stage)?.hold();
+      on.move(pt(e), e);
+    };
+    const down = (e) => {
+      clearTimeout(tm);
+      touring.get(stage)?.hold();
+      if (e.pointerType !== "mouse") stage.releasePointerCapture?.(e.pointerId);
+      if (on.down) on.down(pt(e), e);
+      else on.move(pt(e), e);
+    };
+    const leave = (e) => {
+      clearTimeout(tm);
+      tm = window.setTimeout(() => {
+        on.leave(e);
+        touring.get(stage)?.release();
+      }, e.pointerType === "mouse" ? 0 : 1400);
+    };
+    stage.addEventListener("pointermove", move);
+    stage.addEventListener("pointerdown", down);
+    stage.addEventListener("pointerleave", leave);
+    return () => {
+      clearTimeout(tm);
+      if (handlers.get(stage) === on) handlers.delete(stage);
+      stage.removeEventListener("pointermove", move);
+      stage.removeEventListener("pointerdown", down);
+      stage.removeEventListener("pointerleave", leave);
+    };
+  }
+  var LAP = [[128, 150], [200, 118], [272, 150], [200, 206], null];
+  var TRAVEL = 900;
+  var DWELL = 1200;
+  var REST = 1800;
+  var RESUME = 1200;
+  var STAGGER = 450;
+  var GHOST = { pointerType: "ghost" };
+  var started = 0;
+  function entry([x, y]) {
+    const dx = x - 200, dy = y - 160;
+    if (!dx && !dy) return [200, 320];
+    const k = Math.min(dx ? (dx > 0 ? 200 : -200) / dx : Infinity, dy ? (dy > 0 ? 160 : -160) / dy : Infinity);
+    return [200 + dx * k, 160 + dy * k];
+  }
+  function tour(stage, stops, onStop) {
+    let i = 0;
+    let wait = RESUME + STAGGER * (started++ % 4);
+    let t = -1;
+    let at = null;
+    let origin = [200, 320];
+    let hand = false, keys = stage.contains(stage.ownerDocument.activeElement);
+    let gone = false;
+    const leave = () => {
+      at = null;
+      t = -1;
+      handlers.get(stage)?.leave(GHOST);
+    };
+    const tick = (dt) => {
+      if (hand || keys || !stops.length) return false;
+      if (reducedMotion()) {
+        if (at) leave();
+        return false;
+      }
+      if (wait > 0) {
+        wait -= dt * 1e3;
+        return true;
+      }
+      const stop2 = stops[i];
+      if (stop2 === null) {
+        if (at) leave();
+        onStop?.(i);
+        i = (i + 1) % stops.length;
+        wait = REST;
+        return true;
+      }
+      const h = handlers.get(stage);
+      if (!h) return true;
+      if (t < 0) {
+        origin = at ?? entry(stop2);
+        t = 0;
+      }
+      t = Math.min(TRAVEL, t + dt * 1e3);
+      const k = EASE_LIFT(t / TRAVEL);
+      at = [origin[0] + (stop2[0] - origin[0]) * k, origin[1] + (stop2[1] - origin[1]) * k];
+      h.move(at, GHOST);
+      if (t < TRAVEL) return true;
+      onStop?.(i);
+      i = (i + 1) % stops.length;
+      t = -1;
+      wait = DWELL;
+      return true;
+    };
+    const take = () => {
+      at = null;
+      t = -1;
+    };
+    const give = () => {
+      if (hand || keys) return;
+      i = 0;
+      t = -1;
+      wait = RESUME;
+      board.wake();
+    };
+    const me = {
+      hold: () => {
+        hand = true;
+        take();
+      },
+      release: () => {
+        if (!hand) return;
+        hand = false;
+        give();
+      }
+    };
+    const focusIn = () => {
+      keys = true;
+      take();
+    };
+    const focusOut = (e) => {
+      if (keys && !stage.contains(e.relatedTarget)) {
+        keys = false;
+        give();
+      }
+    };
+    stage.addEventListener("focusin", focusIn);
+    stage.addEventListener("focusout", focusOut);
+    touring.set(stage, me);
+    const board = register(stage, tick);
+    return {
+      stop: () => {
+        if (gone) return;
+        gone = true;
+        board.unregister();
+        stage.removeEventListener("focusin", focusIn);
+        stage.removeEventListener("focusout", focusOut);
+        if (touring.get(stage) === me) touring.delete(stage);
+        if (at) leave();
+      }
+    };
+  }
+  function disposer() {
+    let fns = [];
+    return {
+      add: (fn) => {
+        fns.push(fn);
+      },
+      on: (target, type, fn, opts) => {
+        const h = fn;
+        target.addEventListener(type, h, opts);
+        fns.push(() => target.removeEventListener(type, h, opts));
+      },
+      dispose: () => {
+        const run2 = fns;
+        fns = [];
+        for (let i = run2.length - 1; i >= 0; i--) run2[i]();
+      }
+    };
+  }
+
+  // packages/hairline/src/core/styles.ts
+  var LIGHT = { plate: "#ffffff", hi: "#232327", edge: "#a4a4ac", mid: "#c3c3c9", lo: "#e0e0e4" };
+  var DARK = { plate: "#08090a", hi: "#d0d6e0", edge: "#5b5d64", mid: "#3e3e44", lo: "#29292d" };
+  var KEYS = ["plate", "hi", "edge", "mid", "lo"];
+  var vars = (p) => KEYS.map((k) => `--hl-${k}:var(--hairline-${k},${p[k]});`).join("");
+  var EASE = "cubic-bezier(0.5,0,0.1,1)";
+  var SVG = ":where([data-hairline]>svg)";
+  function css(lightDark) {
+    const both = Object.fromEntries(KEYS.map((k) => [k, `light-dark(${LIGHT[k]},${DARK[k]})`]));
+    return [
+      // the box, and the palette: light unless something below says otherwise
+      `:where([data-hairline]){display:block;position:relative;aspect-ratio:5/4;touch-action:pan-y;user-select:none;-webkit-user-select:none;--hl-sw:var(--hairline-stroke,0.9);${vars(LIGHT)}}`,
+      // the page's color-scheme
+      lightDark ? `:where([data-hairline]){${vars(both)}}` : "",
+      // an ancestor that says dark
+      `:where(.dark,[data-theme="dark"]) :where([data-hairline]){${vars(DARK)}}`,
+      // the figure's own theme option
+      `:where([data-hairline][data-hairline-theme="light"]){${vars(LIGHT)}}`,
+      `:where([data-hairline][data-hairline-theme="dark"]){${vars(DARK)}}`,
+      `:where([data-hairline]:focus-visible){outline:1.5px solid var(--hl-hi);outline-offset:2px}`,
+      `${SVG}{position:absolute;inset:0;width:100%;height:100%;display:block}`,
+      // Riffle's live region: read, not seen
+      `:where([data-hairline]>[data-hairline-live]){position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}`,
+      // the drawing: plates are filled with the plate colour and painted back to front
+      `${SVG} :where(path,polygon,ellipse,line){fill:var(--hl-plate);stroke:var(--hl-mid);stroke-width:var(--hl-sw);vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round;transition:stroke 260ms ${EASE}}`,
+      `${SVG} :where(.nf){fill:none}`,
+      `${SVG} :where(.fo){stroke:none}`,
+      `${SVG} :where(.sil){stroke:var(--hl-edge)}`,
+      `${SVG} :where(.hi){stroke:var(--hl-hi)}`,
+      `${SVG} :where(.lo){stroke:var(--hl-lo)}`,
+      `${SVG} :where(.dash){stroke-dasharray:1 3}`,
+      `${SVG} :where(.dot){stroke:none;fill:var(--hl-hi);transition:fill 260ms ${EASE}}`,
+      `${SVG} :where(.dot.m){fill:var(--hl-edge)}`,
+      `${SVG} :where(.dot.off){fill:var(--hl-lo)}`,
+      `${SVG} :where(.ghost path){fill:none;stroke:var(--hl-mid)}`
+    ].join("");
+  }
+  var done = /* @__PURE__ */ new WeakSet();
+  function inject(root) {
+    if (done.has(root)) return;
+    done.add(root);
+    const doc = root.nodeType === 9 ? root : root.ownerDocument;
+    const win = doc.defaultView;
+    const text = css(!!win?.CSS?.supports?.("color", "light-dark(#000,#fff)"));
+    if (win && "adoptedStyleSheets" in root) {
+      try {
+        const sheet = new win.CSSStyleSheet();
+        sheet.replaceSync(text);
+        root.adoptedStyleSheets = [...root.adoptedStyleSheets, sheet];
+        return;
+      } catch {
+      }
+    }
+    const style = doc.createElement("style");
+    style.setAttribute("data-hairline-style", "");
+    style.textContent = text;
+    (root.nodeType === 9 ? doc.head ?? doc.documentElement : root).appendChild(style);
+  }
+  return __toCommonJS(kernel_exports);
+})();
+/* /hairline kernel */
+
+</script>
+<script id="hl-host">
+/* The host for the Hairline figure: like the skill's bench, it makes the stage
+   and the svg and hands them over, then turns the read-out into a note. */
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const notes = CONFIG.openWhen, seen = new Set();
+  let touched = false, playing = null;
+  function showNote(text) {
+    $('hlRead').textContent = text;
+    const m = /(\d+)$/.exec(text);
+    if (!m) return;
+    const idx = Number(m[1]) - 1, n = notes[idx];
+    if (!n) return;
+    $('noteTitle').textContent = 'Letter ' + m[1] + ' · ' + n.t;
+    $('noteText').textContent = n.p;
+    const card = $('note'); card.classList.remove('pop'); void card.offsetWidth; card.classList.add('pop');
+    if (touched && !seen.has(idx)) {
+      seen.add(idx);
+      $('hlCount').textContent = seen.size + ' of ' + notes.length + ' read';
+      if (seen.size === notes.length) { toast('You opened every single letter 💜 Every word was true.', 3200); confetti(70, ['💌','💜','💗']); }
+    }
+  }
+  window.hairline = (figure) => {
+    const stage = $('hlStage');
+    HL.inject(document);
+    stage.setAttribute('data-hairline', figure.name);
+    stage.setAttribute('role', 'img');
+    stage.setAttribute('aria-label', figure.means);
+    const svg = HL.mk('svg', { viewBox: '0 0 400 320', 'aria-hidden': 'true' }, stage);
+    let text = 'rest';
+    const read = { get textContent() { return text; }, set textContent(v) { text = v == null ? '' : String(v); showNote(text); } };
+    /* a real hand is noticed first (capture), so its very first letter counts */
+    const hand = () => { touched = true; if (playing) { playing.stop(); playing = null; } };
+    stage.addEventListener('pointerdown', hand, true);
+    stage.addEventListener('pointermove', (e) => { if (e.isTrusted) hand(); }, true);
+    figure.mount({ stage, svg, read }, figure.range[1]);
+    /* until she reaches for it, an unseen hand walks the box once it scrolls into view */
+    new IntersectionObserver(([e]) => {
+      if (touched) return;
+      if (e.isIntersecting && !playing) playing = HL.tour(stage, figure.tour || HL.LAP, () => {});
+      else if (!e.isIntersecting && playing) { playing.stop(); playing = null; }
+    }, { threshold: 0.5 }).observe(stage);
+  };
+})();
+</script>
+<script type="module" id="hl-figure">
+/**
+ * Letters: a letter box holding eight envelopes on edge, flap side out. The
+ * envelope under the pointer stands up and lifts, its flap swings open and the
+ * note inside slides up; the ones in front lean forward and the ones behind
+ * lean back, staggered outwards from it. The slider is the stagger, in ms.
+ */
+const {
+  Cam, clamp, facing, fillet, fit, hull, lerp, open, poly, proj, rad, ringAt, rrect, run, seg,
+  tdone, tset, tval, tween, disposer, mk, place, pointer, reflect, register,
+} = HL;
+
+const N = 8, W = 84, H = 50, G = 13, TK = 1.4, FH = 32, SH = 22, CLOSE = 0.42;
+const REST = -12, BACK = -24, FWD = 20, LIFT = 14;
+const X0 = -5, X1 = W + 5, Y0 = -9, Y1 = (N - 1) * G + 9, WH = 20, WR = 6, WT = 2.4;
+
+/** A run of points ordered left to right on screen. */
+const LR = (pts) => (pts[0][0] <= pts[pts.length - 1][0] ? pts : pts.slice().reverse());
+
+/** The box, which never moves: `far` is painted before the envelopes, `near` after them. */
+function box(P, front, outer, inner) {
+  const far = [
+    [poly(hull(ringAt(P, outer, 0).concat(ringAt(P, outer, WH)))), "sil"],
+    [poly(ringAt(P, inner, WH)), "nf"],
+    [open(ringAt(P, run(inner, (q) => !front(q)), 2.5)), "nf lo"],
+  ];
+  const iF = LR(ringAt(P, run(inner, front), WH)), oT = LR(ringAt(P, run(outer, front), WH)), oB = LR(ringAt(P, run(outer, front), 0));
+  const hx = (X0 + X1) / 2, onFront = (ring) => ring.map((q) => P(q.u, Y1, q.v));
+  const near = [
+    [poly([...iF, oT[oT.length - 1], ...oB.slice().reverse(), oT[0]]), "fo"],
+    [open(oT), "nf lo"],
+    [open(iF), "nf"],
+    [open([oT[0], ...oB, oT[oT.length - 1]]), "nf sil"],
+    [poly(onFront(rrect(hx - 11, 6.5, hx + 11, 12.5, 3, 5))), "nf"],
+    [poly(onFront(rrect(hx - 9.4, 8, hx + 9.4, 11, 1.5, 5))), "nf lo"],
+  ];
+  return { far, near };
+}
+
+const BODY = fillet([[0, 0], [W, 0], [W, H], [0, H]], [2.2, 2.2, 2.2, 2.2]);
+const SHEET = (top) => fillet([[13, H - 28], [W - 13, H - 28], [W - 13, top], [13, top]], [0.8, 0.8, 1.6, 1.6]);
+
+/** Envelope i leaning th degrees and lifted by `lift`, its flap open by f (0 shut, 1 open). */
+function pose(P, i, th, lift, f) {
+  const yb = i * G, s = Math.sin(rad(th)), c = Math.cos(rad(th));
+  const w = (u, v) => P(u, yb + v * s, v * c + lift);
+  const wb = (u, v) => P(u, yb + v * s - TK * c, v * c + TK * s + lift);
+  const tip = lerp(H * CLOSE, H + FH, f), up = tip > H;
+  const sh = H - 4 + clamp((f - 0.45) / 0.55, 0, 1) * SH;
+  const flap = [w(1.2, H - 0.6), w(W / 2, tip), w(W - 1.2, H - 0.6)];
+  return {
+    back: poly(BODY.map((p) => wb(p[0], p[1]))),
+    flapUp: up ? poly(flap) : "",
+    sheet: poly(SHEET(sh).map((p) => w(p[0], p[1]))),
+    lines: sh > H + 8 ? [sh - 7, sh - 12, sh - 17].filter((v) => v > H + 2).map((v, k) => seg(w(19, v), w(W - (k === 2 ? 42 : 19), v))).join("") : "",
+    face: poly(BODY.map((p) => w(p[0], p[1]))),
+    seams: seg(w(2, 1.5), w(W * 0.44, H * 0.47)) + seg(w(W - 2, 1.5), w(W * 0.56, H * 0.47)),
+    flapDown: up ? "" : open(flap),
+    seal: w(W / 2, tip - (up ? 3.4 : 0)),
+  };
+}
+
+function mount({ stage, svg, read }, value) {
+  const bag = disposer();
+  let stag = value;
+
+  // fitted to the box with an envelope lifted, its note out, so nothing leaves the frame
+  const C = Cam(45, 0.5, 1.5);
+  fit(C, [[X0, Y0, 0], [X1, Y1, -8], [X1, Y0, 0], [X0, Y1, 0], [X0, Y0, H], [X1, Y0, H + LIFT + FH]], 200, 160);
+  const P = proj(C), front = facing(C);
+  const outer = rrect(X0, Y0, X1, Y1, WR, 6), inner = rrect(X0 + WT, Y0 + WT, X1 - WT, Y1 - WT, WR - WT, 6);
+  const paths = box(P, front, outer, inner);
+
+  const g = mk("g", {}, svg);
+  reflect(svg, g, P, front, outer, 0, 14);
+  for (const [d, cls] of paths.far) mk("path", { d, class: cls }, g);
+
+  const MARK = N - 1; // the envelope that is bright at rest: the eye starts there
+  const env = [];
+  for (let i = 0; i < N; i++) {
+    const grp = mk("g", {}, g);
+    const el = {
+      back: mk("path", { class: "lo" }, grp),
+      flapUp: mk("path", { class: "sil" }, grp),
+      sheet: mk("path", { class: "sil" }, grp),
+      lines: mk("path", { class: "nf lo" }, grp),
+      face: mk("path", { class: "sil" }, grp),
+      seams: mk("path", { class: "nf lo" }, grp),
+      flapDown: mk("path", { class: "nf" }, grp),
+    };
+    el.seal = mk("circle", { r: 1.7, class: i === MARK ? "dot" : "dot off" }, grp);
+    env.push({ el, a: tween(REST), z: tween(0), f: tween(0), last: "" });
+  }
+  for (const [d, cls] of paths.near) mk("path", { d, class: cls }, g);
+
+  // hit bands along the RESTING top edges: they never move, and nothing draws them
+  const top = (i) => P(W / 2, i * G + H * Math.sin(rad(REST)), H * Math.cos(rad(REST)));
+  const c0 = top(0), c1 = top(1), d = [c1[0] - c0[0], c1[1] - c0[1]];
+  const px0 = P(0, 0, 0), px1 = P(1, 0, 0), ex = [px1[0] - px0[0], px1[1] - px0[1]];
+  const HALF = W / 2 + 6, det = d[0] * ex[1] - d[1] * ex[0];
+  function hit([x, y]) {
+    const qx = x - c0[0], qy = y - c0[1];
+    const s = (qx * ex[1] - qy * ex[0]) / det, r = (d[0] * qy - d[1] * qx) / det;
+    if (Math.abs(r) > HALF || s < -0.5 || s > N + 1) return -1;
+    return clamp(Math.round(s), 0, N - 1);
+  }
+
+  function draw(i, now) {
+    const e = env[i], th = tval(e.a, now), lift = tval(e.z, now), f = tval(e.f, now);
+    const key = th.toFixed(3) + lift.toFixed(3) + f.toFixed(3);
+    if (key === e.last) return;
+    e.last = key;
+    const q = pose(P, i, th, lift, f);
+    for (const k of ["back", "flapUp", "sheet", "lines", "face", "seams", "flapDown"]) e.el[k].setAttribute("d", q[k]);
+    place(e.el.seal, q.seal);
+  }
+
+  const B = register(stage, (_dt, now) => {
+    let moving = false;
+    env.forEach((e, i) => { draw(i, now); if (!tdone(e.a, now) || !tdone(e.z, now) || !tdone(e.f, now)) moving = true; });
+    return moving;
+  });
+  bag.add(B.unregister);
+
+  let act = -1;
+  const caption = (a) => (a < 0 ? "rest" : "letter " + String(N - a).padStart(2, "0"));
+  function setActive(a) {
+    if (a === act) return;
+    const now = performance.now(), from = a >= 0 ? a : act;
+    act = a;
+    env.forEach((e, i) => {
+      const delay = Math.abs(i - from) * stag;
+      tset(e.a, a < 0 ? REST : i < a ? BACK : i > a ? FWD : 0, now, delay);
+      tset(e.z, a === i ? LIFT : 0, now, delay);
+      tset(e.f, a === i ? 1 : 0, now, delay);
+      const on = i === a;
+      for (const k of ["face", "flapUp", "sheet"]) e.el[k].classList.toggle("hi", on);
+      e.el.flapDown.classList.toggle("hi", on);
+      e.el.seal.setAttribute("class", on || (a < 0 && i === MARK) ? "dot" : "dot off");
+    });
+    read.textContent = caption(a);
+    B.wake();
+  }
+
+  bag.add(pointer(stage, { move: (p) => setActive(hit(p)), leave: () => setActive(-1) }));
+  bag.add(() => svg.replaceChildren());
+
+  return {
+    set: (v) => { stag = v; },
+    destroy: bag.dispose,
+  };
+}
+
+hairline({
+  name: "letters",
+  means: "Eight envelopes in a letter box: the one under the pointer stands up, opens, and its note slides out.",
+  rules: [1, 2, 5, 8],
+  range: [0, 40, 90],
+  tour: [[152, 151], [219, 119], [259, 99], null],
+  mount,
+});
+
+</script>
+</body>
+</html>
